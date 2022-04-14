@@ -22,6 +22,14 @@ GET http://localhost:3000/helmets
 
 GET http://localhost:3000/helmets/6228084ea7eab53cae196c0e
 
+###legging requests
+
+GET http://localhost:3000/leggings
+
+###
+
+GET http://localhost:3000/leggings/6228084ea7eab53cae196c0e
+
 ###requests for testing
 
 GET http://localhost:3000/items

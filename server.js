@@ -30,11 +30,11 @@ app.use("/chestplates", chestplatesRouter);
 const helmetsRouter = require("./routes/helmets");
 app.use("/helmets", helmetsRouter);
 
-/*
 //leggings router
 const leggingsRouter = require("./routes/leggings");
 app.use("/leggings", leggingsRouter);
 
+/*
 //users router
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
