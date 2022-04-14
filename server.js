@@ -34,11 +34,9 @@ app.use("/helmets", helmetsRouter);
 const leggingsRouter = require("./routes/leggings");
 app.use("/leggings", leggingsRouter);
 
-/*
 //users router
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
-*/
 
 //start server
 app.listen(3000, () => console.log("Server Started"));

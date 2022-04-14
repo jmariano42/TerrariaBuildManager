@@ -22,7 +22,7 @@ async function getLegging(req, res, next) {
   try {
     legging = await Legging.findById(req.params.id);
     if (legging == null) {
-      return res.status(404).json({ message: "Cannot find helmet" });
+      return res.status(404).json({ message: "Cannot find legging" });
     }
   } catch (err) {
     return res.status(500).json({ message: err.message });

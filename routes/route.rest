@@ -28,7 +28,15 @@ GET http://localhost:3000/leggings
 
 ###
 
-GET http://localhost:3000/leggings/6228084ea7eab53cae196c0e
+GET http://localhost:3000/leggings/622809f8a7eab53cae1cdc71
+
+###user requests
+
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/users/625788d77629b300159003e4
 
 ###requests for testing
 
