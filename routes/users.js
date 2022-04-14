@@ -36,10 +36,10 @@ router.post("/", async (req, res) => {
 //Updating one user
 router.patch("/:id", getUser, async (req, res) => {
   if (req.body.name != null) {
-    res.item.name = req.body.name;
+    res.user.name = req.body.name;
   }
   if (req.body.password != null) {
-    res.item.password = req.body.password;
+    res.user.password = req.body.password;
   }
   try {
     const updatedUser = await res.user.save();
