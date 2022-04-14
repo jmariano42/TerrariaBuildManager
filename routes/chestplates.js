@@ -20,7 +20,7 @@ router.get("/:id", getChestplate, (req, res) => {
 async function getChestplate(req, res, next) {
   let chestplate;
   try {
-    chestplate = await Chestplate.find({ _id: req.params.id });
+    chestplate = await Chestplate.findById(req.params.id);
     if (chestplate == null) {
       return res.status(404).json({ message: "Cannot find chestplate" });
     }
