@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const helmetSchema = new mongoose.Schema({
   _id: {
-    type: String,
+    type: mongoose.Types.ObjectId,
     required: true,
   },
   name: {
