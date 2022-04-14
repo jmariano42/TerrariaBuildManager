@@ -1,0 +1,44 @@
+###accessory requests
+
+GET http://localhost:3000/accessories
+
+###
+
+GET http://localhost:3000/accessories/62280a71a7eab53cae1ddab7
+
+###requests for testing
+
+GET http://localhost:3000/items
+
+###
+
+GET http://localhost:3000/items/TestID
+
+###
+
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{
+    "_id": "TestID",
+    "name": "Test Item",
+    "stats": {
+        "test": "test"
+    },
+    "craftable_after": "Test",
+    "image": "Test",
+    "itemID": 25
+}
+
+###
+
+DELETE http://localhost:3000/items/TestID
+
+###
+
+PATCH http://localhost:3000/items/TestID
+Content-Type: application/json
+
+{
+    "name": "Test Update"
+}
