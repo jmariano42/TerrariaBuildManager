@@ -38,6 +38,30 @@ GET http://localhost:3000/users
 
 GET http://localhost:3000/users/625788d77629b300159003e4
 
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "_id": "testPost",
+    "name": "testPost",
+    "password": "testPost"
+}
+
+###
+
+DELETE http://localhost:3000/users/testPost
+
+###
+
+PATCH http://localhost:3000/users/testPost
+Content-Type: application/json
+
+{
+    "name": "testUpdate"
+}
+
 ###requests for testing
 
 GET http://localhost:3000/items
