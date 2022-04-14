@@ -6,6 +6,22 @@ GET http://localhost:3000/accessories
 
 GET http://localhost:3000/accessories/62280a71a7eab53cae1ddab7
 
+###chestplate requests
+
+GET http://localhost:3000/chestplates
+
+###
+
+GET http://localhost:3000/chestplates/62280910a7eab53cae1af8da
+
+###helmet requests
+
+GET http://localhost:3000/helmets
+
+###
+
+GET http://localhost:3000/helmets/6228084ea7eab53cae196c0e
+
 ###requests for testing
 
 GET http://localhost:3000/items

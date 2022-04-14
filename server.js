@@ -22,15 +22,15 @@ app.use("/items", itemsRouter);
 const accessoriesRouter = require("./routes/accessories");
 app.use("/accessories", accessoriesRouter);
 
-/*
 //chestplates router
 const chestplatesRouter = require("./routes/chestplates");
-app.use("/chestplates", accessoriesRouter);
+app.use("/chestplates", chestplatesRouter);
 
 //helmets router
 const helmetsRouter = require("./routes/helmets");
 app.use("/helmets", helmetsRouter);
 
+/*
 //leggings router
 const leggingsRouter = require("./routes/leggings");
 app.use("/leggings", leggingsRouter);
