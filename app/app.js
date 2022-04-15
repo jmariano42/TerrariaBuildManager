@@ -1,10 +1,14 @@
 function initLoginListeners() {
   $("#login-submit-btn").click(function (value) {
-    console.log(value);
+    let username = $("#username").val();
+    let password = $("#password").val();
+    console.log(username, password);
     let page = "Main Menu";
     switchPage(page);
   });
   $(".login-submit-btn").click(function (value) {
+    let username = $("#username").val();
+    let password = $("#password").val();
     console.log(value);
     let page = "Main Menu";
     switchPage(page);
@@ -13,12 +17,22 @@ function initLoginListeners() {
 
 function initCreateAccountListeners() {
   $("#create-account-submit-btn").click(function (value) {
-    console.log(value);
+    let fName = $("#first_name").val();
+    let lName = $("#last_name").val();
+    let email = $("#email").val();
+    let username = $("#username").val();
+    let password = $("#password").val();
+    console.log(fName, lName, email, username, password);
     let page = "Main Menu";
     switchPage(page);
   });
   $(".create-account-submit-btn").click(function (value) {
-    console.log(value);
+    let fName = $("#first_name").val();
+    let lName = $("#last_name").val();
+    let email = $("#email").val();
+    let username = $("#username").val();
+    let password = $("#password").val();
+    console.log(fName, lName, email, username, password);
     let page = "Main Menu";
     switchPage(page);
   });
