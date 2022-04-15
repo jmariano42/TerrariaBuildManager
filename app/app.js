@@ -1,3 +1,44 @@
+function initLoginListeners() {
+  $("#login-submit-btn").click(function (value) {
+    console.log(value);
+    let page = "Main Menu";
+    switchPage(page);
+  });
+  $(".login-submit-btn").click(function (value) {
+    console.log(value);
+    let page = "Main Menu";
+    switchPage(page);
+  });
+}
+
+function initCreateAccountListeners() {
+  $("#create-account-submit-btn").click(function (value) {
+    console.log(value);
+    let page = "Main Menu";
+    switchPage(page);
+  });
+  $(".create-account-submit-btn").click(function (value) {
+    console.log(value);
+    let page = "Main Menu";
+    switchPage(page);
+  });
+}
+
+function initMainMenuListeners() {
+  $("#about-btn").click(function (value) {
+    let page = value.currentTarget.innerHTML;
+    switchPage(page);
+  });
+  $("#profile-btn").click(function (value) {
+    let page = value.currentTarget.innerHTML;
+    switchPage(page);
+  });
+  $("#contact-btn").click(function (value) {
+    let page = value.currentTarget.innerHTML;
+    switchPage(page);
+  });
+}
+
 function initAboutListeners() {
   $("#about-back-btn").click(function (value) {
     let page = "Main Menu";
@@ -113,21 +154,6 @@ function switchPage(page) {
     $(".wrapper").empty();
     loadCreateAccount();
   }
-}
-
-function initMainMenuListeners() {
-  $("#about-btn").click(function (value) {
-    let page = value.currentTarget.innerHTML;
-    switchPage(page);
-  });
-  $("#profile-btn").click(function (value) {
-    let page = value.currentTarget.innerHTML;
-    switchPage(page);
-  });
-  $("#contact-btn").click(function (value) {
-    let page = value.currentTarget.innerHTML;
-    switchPage(page);
-  });
 }
 
 function initLandingMenuListeners() {
