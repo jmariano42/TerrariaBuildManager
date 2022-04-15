@@ -1,8 +1,21 @@
+//login page listeners
 function initLoginListeners() {
   $("#login-submit-btn").click(function (value) {
+    //retrieve user input
     let username = $("#username").val();
     let password = $("#password").val();
+    //fetch users
+    fetch("127.0.0.1:3000/users")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => initialize(json))
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
     console.log(username, password);
+    //set page and switch page
     let page = "Main Menu";
     switchPage(page);
   });

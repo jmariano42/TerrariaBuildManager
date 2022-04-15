@@ -44,21 +44,21 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "testPost",
+    "username": "testPost",
     "password": "testPost"
 }
 
 ###
 
-DELETE http://localhost:3000/users/6258567b175add0832778b69
+DELETE http://localhost:3000/users/6258e94dea65f757f1bb493b
 
 ###
 
-PATCH http://localhost:3000/users/6258567b175add0832778b69
+PATCH http://localhost:3000/users/6258e94dea65f757f1bb493b
 Content-Type: application/json
 
 {
-    "name": "testUpdate"
+    "username": "testUpdate"
 }
 
 ###requests for testing
