@@ -4,15 +4,19 @@ function initLoginListeners() {
     //retrieve user input
     let username = $("#username").val();
     let password = $("#password").val();
+    if (!username || !password) {
+      let page = "Login";
+      switchPage(page);
+    }
     //fetch users
-    fetch("127.0.0.1:3000/users")
+    fetch("http://localhost:3000/users")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
         }
         return response.json();
       })
-      .then((json) => initialize(json))
+      .then((json) => console.log(json))
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
     console.log(username, password);
     //set page and switch page
