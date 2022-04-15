@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const mongoose = require("mongoose");
 
 //Getting all users
 router.get("/", async (req, res) => {
@@ -20,9 +21,8 @@ router.get("/:id", getUser, (req, res) => {
 //Creating one user
 router.post("/", async (req, res) => {
   const user = new User({
-    _id: req.body._id,
     name: req.body.name,
-    password: req.body.stats,
+    password: req.body.password,
   });
 
   try {

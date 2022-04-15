@@ -44,18 +44,17 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "_id": "testPost",
     "name": "testPost",
     "password": "testPost"
 }
 
 ###
 
-DELETE http://localhost:3000/users/testPost
+DELETE http://localhost:3000/users/6258567b175add0832778b69
 
 ###
 
-PATCH http://localhost:3000/users/testPost
+PATCH http://localhost:3000/users/6258567b175add0832778b69
 Content-Type: application/json
 
 {
