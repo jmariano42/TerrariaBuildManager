@@ -1,3 +1,25 @@
+//function checks inputted user credentials
+function authenicateUser(users, username, password) {
+  //find user with given username
+  let foundUser = users.find((user) => user.username === username);
+  //check to see if a user was found
+  if (!foundUser) {
+    //if no user is found then send user back to login
+    let page = "Login";
+    switchPage(page);
+  } else {
+    //check if password given matches user password
+    if (foundUser.password === password) {
+      //user is authenticated
+      console.log("User Authenticated");
+    } else {
+      //if password does not match then send user back to login
+      let page = "Login";
+      switchPage(page);
+    }
+  }
+}
+
 //login page listeners
 function initLoginListeners() {
   $("#login-submit-btn").click(function (value) {
@@ -7,21 +29,21 @@ function initLoginListeners() {
     if (!username || !password) {
       let page = "Login";
       switchPage(page);
+    } else {
+      //fetch users
+      fetch("http://localhost:3000/users")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((json) => authenicateUser(json, username, password))
+        .catch((err) => console.error(`Fetch problem: ${err.message}`));
+      //set page and switch page
+      let page = "Main Menu";
+      switchPage(page);
     }
-    //fetch users
-    fetch("http://localhost:3000/users")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((json) => console.log(json))
-      .catch((err) => console.error(`Fetch problem: ${err.message}`));
-    console.log(username, password);
-    //set page and switch page
-    let page = "Main Menu";
-    switchPage(page);
   });
   $(".login-submit-btn").click(function (value) {
     let username = $("#username").val();
