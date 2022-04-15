@@ -35,7 +35,217 @@ p {
   position: relative;
 }
 
-/* Home Page Styling */
+/* Landing Menu Styling */
+.logo {
+  height: 225px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-menu {
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  font-size: 50px;
+}
+
+.landing-menu p {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  cursor: pointer;
+}
+
+/* Login Page Styling */
+.login-header {
+  width: 279px;
+  height: 66px;
+  background-color: #495eab;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 135px;
+  left: calc(50% - (279px / 2));
+  z-index: 10;
+}
+
+.login-header p {
+  margin-top: 25px;
+  color: white;
+  font-size: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.login-form-wrapper {
+  width: 779px;
+  height: 682px;
+  background-color: rgba(50, 73, 114, 0.75);
+  border: 2px solid black;
+  border-radius: 10px;
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  top: 184px;
+  left: calc(50% - (779px / 2));
+}
+
+.login-form {
+  width: 720px;
+  margin: 33px auto;
+}
+
+.login-form label {
+  font-family: andy;
+  margin-left: 3px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.login-input-wrapper {
+  width: 720px;
+  height: 115px;
+  background-color: rgba(59, 78, 139, 0.75);
+  border: 2px solid #4f6197;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.login-form input {
+  width: 710px;
+  height: 68px;
+  margin-left: 3px;
+  background-color: #232f52;
+  border: 2px solid #57689b;
+  border-radius: 10px;
+  color: white;
+  font-family: andy;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.login-submit-button {
+  width: 375px;
+  height: 60px;
+  background-color: #495eab;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 886px;
+  left: calc(50% - (375px / 2));
+  cursor: pointer;
+}
+
+#login-submit-btn {
+  margin-top: 25px;
+  color: white;
+  font-size: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+/* Create Account Page Styling */
+.create-account-header {
+  width: 325px;
+  height: 66px;
+  background-color: #495eab;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 135px;
+  left: calc(50% - (279px / 2));
+  z-index: 10;
+}
+
+.create-account-header p {
+  margin-top: 25px;
+  color: white;
+  font-size: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.create-account-form-wrapper {
+  width: 779px;
+  height: 682px;
+  background-color: rgba(50, 73, 114, 0.75);
+  border: 2px solid black;
+  border-radius: 10px;
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  top: 184px;
+  left: calc(50% - (779px / 2));
+}
+
+.create-account-form {
+  width: 720px;
+  margin: 33px auto;
+}
+
+.create-account-form label {
+  font-family: andy;
+  margin-left: 3px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.create-account-input-wrapper {
+  width: 720px;
+  height: 115px;
+  background-color: rgba(59, 78, 139, 0.75);
+  border: 2px solid #4f6197;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.create-account-form input {
+  width: 710px;
+  height: 68px;
+  margin-left: 3px;
+  background-color: #232f52;
+  border: 2px solid #57689b;
+  border-radius: 10px;
+  color: white;
+  font-family: andy;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.create-account-submit-button {
+  width: 375px;
+  height: 60px;
+  background-color: #495eab;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 886px;
+  left: calc(50% - (375px / 2));
+  cursor: pointer;
+}
+
+#create-account-submit-btn {
+  margin-top: 25px;
+  color: white;
+  font-size: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+/* Main Menu Styling */
 .logo {
   height: 225px;
   display: flex;

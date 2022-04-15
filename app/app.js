@@ -75,7 +75,21 @@ function loadContact() {
 function loadMainMenu() {
   $.get("../views/main-menu.html", function (main_menu) {
     $(".wrapper").html(main_menu);
-    initListeners();
+    initMainMenuListeners();
+  });
+}
+
+function loadLogin() {
+  $.get("../views/login.html", function (login) {
+    $(".wrapper").html(login);
+    initLoginListeners();
+  });
+}
+
+function loadCreateAccount() {
+  $.get("../views/create-account.html", function (create_account) {
+    $(".wrapper").html(create_account);
+    initCreateAccountListeners();
   });
 }
 
@@ -92,10 +106,16 @@ function switchPage(page) {
   } else if (page == "Main Menu") {
     $(".wrapper").empty();
     loadMainMenu();
+  } else if (page == "Login") {
+    $(".wrapper").empty();
+    loadLogin();
+  } else if (page == "Create Account") {
+    $(".wrapper").empty();
+    loadCreateAccount();
   }
 }
 
-function initListeners() {
+function initMainMenuListeners() {
   $("#about-btn").click(function (value) {
     let page = value.currentTarget.innerHTML;
     switchPage(page);
@@ -110,10 +130,21 @@ function initListeners() {
   });
 }
 
+function initLandingMenuListeners() {
+  $("#login-btn").click(function (value) {
+    let page = value.currentTarget.innerHTML;
+    switchPage(page);
+  });
+  $("#create-account-btn").click(function (value) {
+    let page = value.currentTarget.innerHTML;
+    switchPage(page);
+  });
+}
+
 function initSite() {
-  $.get("../views/main-menu.html", function (main_menu) {
-    $(".wrapper").html(main_menu);
-    initListeners();
+  $.get("../views/landing-menu.html", function (landing_menu) {
+    $(".wrapper").html(landing_menu);
+    initLandingMenuListeners();
   });
 }
 
