@@ -1,5 +1,12 @@
+const currentUser = {
+  _id: null,
+  username: null,
+  password: null,
+};
+
 //function checks inputted user credentials
 function authenicateUser(users, username, password) {
+  console.log(currentUser);
   //find user with given username
   let foundUser = users.find((user) => user.username === username);
   //check to see if a user was found
@@ -12,6 +19,10 @@ function authenicateUser(users, username, password) {
     if (foundUser.password === password) {
       //user is authenticated
       console.log("User Authenticated");
+      currentUser._id = foundUser._id;
+      currentUser.username = foundUser.username;
+      currentUser.password = foundUser.password;
+      console.log(currentUser);
     } else {
       //if password does not match then send user back to login
       let page = "Login";
