@@ -374,6 +374,16 @@ p {
   position: absolute;
   top: 184px;
   left: calc(50% - (779px + 31px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-info {
+  width: 100%;
+  margin: 20px auto;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .profile-back-button {

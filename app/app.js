@@ -1,5 +1,8 @@
 const currentUser = {
   _id: null,
+  first_name: null,
+  last_name: null,
+  email: null,
   username: null,
   password: null,
 };
@@ -21,6 +24,9 @@ function authenicateUser(users, username, password) {
       //user is authenticated
       console.log("User Authenticated");
       currentUser._id = foundUser._id;
+      currentUser.first_name = foundUser.first_name;
+      currentUser.last_name = foundUser.last_name;
+      currentUser.email = foundUser.email;
       currentUser.username = foundUser.username;
       currentUser.password = foundUser.password;
       console.log(currentUser);
@@ -130,6 +136,9 @@ function initMainMenuListeners() {
   });
   $("#logout-btn").click(function (value) {
     currentUser._id = null;
+    currentUser.first_name = null;
+    currentUser.last_name = null;
+    currentUser.email = null;
     currentUser.username = null;
     currentUser.password = null;
     let page = "Landing Menu";
@@ -150,7 +159,7 @@ function initAboutListeners() {
 
 function initNewBuildListeners() {}
 
-function initProfileLIsteners() {
+function initProfileListeners() {
   $("#profile-back-btn").click(function () {
     let page = "Main Menu";
     switchPage(page);
@@ -171,6 +180,16 @@ function initProfileLIsteners() {
       initNewBuildListeners();
     });
   });
+}
+
+function addUserProfileData() {
+  let name = currentUser.first_name + " " + currentUser.last_name;
+  let email = currentUser.email;
+  let username = currentUser.username;
+  console.log(name, email, username);
+  $("#profile-name").append(name);
+  $("#profile-email").append(email);
+  $("#profile-username").append(username);
 }
 
 function initContactListeners() {
@@ -200,7 +219,8 @@ function loadAbout() {
 function loadProfile() {
   $.get("../views/profile.html", function (profile) {
     $(".wrapper").html(profile);
-    initProfileLIsteners();
+    initProfileListeners();
+    addUserProfileData();
   });
 }
 
