@@ -101,6 +101,13 @@ function initMainMenuListeners() {
     let page = value.currentTarget.innerHTML;
     switchPage(page);
   });
+  $("#logout-btn").click(function (value) {
+    currentUser._id = null;
+    currentUser.username = null;
+    currentUser.password = null;
+    let page = "Landing Menu";
+    switchPage(page);
+  });
 }
 
 function initAboutListeners() {
@@ -198,7 +205,15 @@ function loadCreateAccount() {
   });
 }
 
+function loadLandingMenu() {
+  $.get("../views/landing-menu.html", function (landing_menu) {
+    $(".wrapper").html(landing_menu);
+    initLandingMenuListeners();
+  });
+}
+
 function switchPage(page) {
+  console.log(page);
   if (page == "About") {
     $(".wrapper").empty();
     loadAbout();
@@ -217,20 +232,30 @@ function switchPage(page) {
   } else if (page == "Create Account") {
     $(".wrapper").empty();
     loadCreateAccount();
+  } else if (page == "Landing Menu") {
+    $(".wrapper").empty();
+    loadLandingMenu();
   }
 }
 
+//sets up click listeners for landing menu buttons
 function initLandingMenuListeners() {
   $("#login-btn").click(function (value) {
+    //sets page to login
     let page = value.currentTarget.innerHTML;
+    //switches view to login page
     switchPage(page);
   });
   $("#create-account-btn").click(function (value) {
+    //sets page to create account
     let page = value.currentTarget.innerHTML;
+    //switches view to create account
     switchPage(page);
   });
 }
 
+//gets landing menu view
+//inits landing menu listeners
 function initSite() {
   $.get("../views/landing-menu.html", function (landing_menu) {
     $(".wrapper").html(landing_menu);
@@ -238,6 +263,7 @@ function initSite() {
   });
 }
 
+//run initSite on document ready
 $(document).ready(function () {
   initSite();
 });
