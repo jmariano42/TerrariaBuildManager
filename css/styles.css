@@ -310,7 +310,7 @@ p {
   width: 80%;
 }
 
-.about-back-button {
+.about-back-btn {
   width: 375px;
   height: 60px;
   background-color: #495eab;
@@ -381,9 +381,7 @@ p {
 
 .profile-info {
   width: 100%;
-  margin: 20px auto;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
+  margin: 25px auto;
 }
 
 .profile-back-button {
