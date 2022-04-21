@@ -9,8 +9,9 @@ function authenicateUser(users, username, password) {
   console.log(currentUser);
   //find user with given username
   let foundUser = users.find((user) => user.username === username);
+  console.log(foundUser);
   //check to see if a user was found
-  if (!foundUser) {
+  if (!foundUser || foundUser == undefined) {
     //if no user is found then send user back to login
     let page = "Login";
     switchPage(page);
@@ -65,6 +66,31 @@ function initLoginListeners() {
   });
 }
 
+function createNewUser(fName, lName, email, username, password) {
+  let user = {
+    first_name: fName,
+    last_name: lName,
+    email: email,
+    username: username,
+    password: password,
+  };
+
+  fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
 function initCreateAccountListeners() {
   $("#create-account-submit-btn").click(function (value) {
     let fName = $("#first_name").val();
@@ -73,6 +99,7 @@ function initCreateAccountListeners() {
     let username = $("#username").val();
     let password = $("#password").val();
     console.log(fName, lName, email, username, password);
+    createNewUser(fName, lName, email, username, password);
     let page = "Main Menu";
     switchPage(page);
   });

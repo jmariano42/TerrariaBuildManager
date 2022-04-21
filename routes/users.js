@@ -35,6 +35,9 @@ router.get("/:id", getUser, (req, res) => {
 //Creating one user
 router.post("/", async (req, res) => {
   const user = new User({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
     username: req.body.username,
     password: req.body.password,
   });
@@ -49,6 +52,15 @@ router.post("/", async (req, res) => {
 
 //Updating one user
 router.patch("/:id", getUser, async (req, res) => {
+  if (req.body.first_name != null) {
+    res.user.first_name = req.body.first_name;
+  }
+  if (req.body.last_name != null) {
+    res.user.last_name = req.body.last_name;
+  }
+  if (req.body.email != null) {
+    res.user.email = req.body.email;
+  }
   if (req.body.username != null) {
     res.user.username = req.body.username;
   }
