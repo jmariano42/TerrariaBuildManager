@@ -40,7 +40,11 @@ function authenicateUser(users, username, password) {
 
 //login page listeners
 function initLoginListeners() {
-  $("#login-submit-btn").click(function (value) {
+  $(".login-back-button").click(function () {
+    let page = "Landing Menu";
+    switchPage(page);
+  });
+  $(".login-submit-btn").click(function (value) {
     //retrieve user input
     let username = $("#username").val();
     let password = $("#password").val();
@@ -62,13 +66,6 @@ function initLoginListeners() {
       let page = "Main Menu";
       switchPage(page);
     }
-  });
-  $(".login-submit-btn").click(function (value) {
-    let username = $("#username").val();
-    let password = $("#password").val();
-    console.log(value);
-    let page = "Main Menu";
-    switchPage(page);
   });
 }
 
@@ -98,15 +95,8 @@ function createNewUser(fName, lName, email, username, password) {
 }
 
 function initCreateAccountListeners() {
-  $("#create-account-submit-btn").click(function (value) {
-    let fName = $("#first_name").val();
-    let lName = $("#last_name").val();
-    let email = $("#email").val();
-    let username = $("#username").val();
-    let password = $("#password").val();
-    console.log(fName, lName, email, username, password);
-    createNewUser(fName, lName, email, username, password);
-    let page = "Main Menu";
+  $(".create-account-back-button").click(function () {
+    let page = "Landing Menu";
     switchPage(page);
   });
   $(".create-account-submit-btn").click(function (value) {
@@ -147,10 +137,6 @@ function initMainMenuListeners() {
 }
 
 function initAboutListeners() {
-  $("#about-back-btn").click(function (value) {
-    let page = "Main Menu";
-    switchPage(page);
-  });
   $(".about-back-btn").click(function (value) {
     let page = "Main Menu";
     switchPage(page);
@@ -160,19 +146,9 @@ function initAboutListeners() {
 function initNewBuildListeners() {}
 
 function initProfileListeners() {
-  $("#profile-back-btn").click(function () {
-    let page = "Main Menu";
-    switchPage(page);
-  });
   $(".profile-back-button").click(function () {
     let page = "Main Menu";
     switchPage(page);
-  });
-  $("#profile-new-btn").click(function () {
-    $.get("../views/new-build.html", function (new_build) {
-      $(".wrapper").html(new_build);
-      initNewBuildListeners();
-    });
   });
   $(".profile-new-button").click(function () {
     $.get("../views/new-build.html", function (new_build) {
@@ -199,22 +175,9 @@ function sendEmail(name, subject, message) {
 }
 
 function initContactListeners() {
-  $("#contact-back-btn").click(function () {
-    let page = "Main Menu";
-    switchPage(page);
-  });
   $(".contact-back-button").click(function () {
     let page = "Main Menu";
     switchPage(page);
-  });
-  $("#contact-send-btn").click(function () {
-    console.log("send email");
-    let fName = $("#first_name").val();
-    let lName = $("#last_name").val();
-    let name = fName + " " + lName;
-    let subject = $("#subject").val();
-    let message = $("#message").val();
-    sendEmail(name, subject, message);
   });
   $(".contact-send-button").click(function () {
     console.log("send email");

@@ -128,6 +128,29 @@ p {
   padding: 10px;
 }
 
+.login-back-button {
+  width: 375px;
+  height: 60px;
+  background-color: #495eab;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 886px;
+  left: calc(50% - (375px + 14.5px));
+  cursor: pointer;
+}
+
+#login-back-btn {
+  margin-top: 25px;
+  color: white;
+  font-size: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
 .login-submit-button {
   width: 375px;
   height: 60px;
@@ -139,7 +162,7 @@ p {
   justify-content: center;
   position: absolute;
   top: 886px;
-  left: calc(50% - (375px / 2));
+  left: calc(50% + 14.5px);
   cursor: pointer;
 }
 
@@ -222,6 +245,29 @@ p {
   padding: 10px;
 }
 
+.create-account-back-button {
+  width: 375px;
+  height: 60px;
+  background-color: #495eab;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 886px;
+  left: calc(50% - (375px + 14.5px));
+  cursor: pointer;
+}
+
+#create-account-back-btn {
+  margin-top: 25px;
+  color: white;
+  font-size: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
 .create-account-submit-button {
   width: 375px;
   height: 60px;
@@ -233,7 +279,7 @@ p {
   justify-content: center;
   position: absolute;
   top: 886px;
-  left: calc(50% - (375px / 2));
+  left: calc(50% + 14.5px);
   cursor: pointer;
 }
 
