@@ -192,6 +192,12 @@ function addUserProfileData() {
   $("#profile-username").append(username);
 }
 
+function sendEmail(name, subject, message) {
+  window.open(
+    `mailto:jcapp42@gmail.com?subject=From ${name} about ${subject}&body=${message}`
+  );
+}
+
 function initContactListeners() {
   $("#contact-back-btn").click(function () {
     let page = "Main Menu";
@@ -203,9 +209,21 @@ function initContactListeners() {
   });
   $("#contact-send-btn").click(function () {
     console.log("send email");
+    let fName = $("#first_name").val();
+    let lName = $("#last_name").val();
+    let name = fName + " " + lName;
+    let subject = $("#subject").val();
+    let message = $("#message").val();
+    sendEmail(name, subject, message);
   });
   $(".contact-send-button").click(function () {
     console.log("send email");
+    let fName = $("#first_name").val();
+    let lName = $("#last_name").val();
+    let name = fName + " " + lName;
+    let subject = $("#subject").val();
+    let message = $("#message").val();
+    sendEmail(name, subject, message);
   });
 }
 
