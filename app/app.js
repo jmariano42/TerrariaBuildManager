@@ -5,6 +5,7 @@ const currentUser = {
   email: null,
   username: null,
   password: null,
+  builds: null,
 };
 
 //function checks inputted user credentials
@@ -29,6 +30,7 @@ function authenicateUser(users, username, password) {
       currentUser.email = foundUser.email;
       currentUser.username = foundUser.username;
       currentUser.password = foundUser.password;
+      currentUser.builds = foundUser.builds;
       console.log(currentUser);
     } else {
       //if password does not match then send user back to login
@@ -69,13 +71,14 @@ function initLoginListeners() {
   });
 }
 
-function createNewUser(fName, lName, email, username, password) {
+function createNewUser(fName, lName, email, username, password, builds) {
   let user = {
     first_name: fName,
     last_name: lName,
     email: email,
     username: username,
     password: password,
+    builds: builds,
   };
 
   fetch("http://localhost:3000/users", {
@@ -105,7 +108,8 @@ function initCreateAccountListeners() {
     let email = $("#email").val();
     let username = $("#username").val();
     let password = $("#password").val();
-    console.log(fName, lName, email, username, password);
+    let builds = [];
+    console.log(fName, lName, email, username, password, builds);
     let page = "Main Menu";
     switchPage(page);
   });
@@ -131,6 +135,7 @@ function initMainMenuListeners() {
     currentUser.email = null;
     currentUser.username = null;
     currentUser.password = null;
+    currentUser.builds = null;
     let page = "Landing Menu";
     switchPage(page);
   });

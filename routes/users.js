@@ -40,6 +40,7 @@ router.post("/", async (req, res) => {
     email: req.body.email,
     username: req.body.username,
     password: req.body.password,
+    builds: req.body.builds,
   });
 
   try {
@@ -66,6 +67,9 @@ router.patch("/:id", getUser, async (req, res) => {
   }
   if (req.body.password != null) {
     res.user.password = req.body.password;
+  }
+  if (req.body.builds != null) {
+    res.user.builds = req.body.builds;
   }
   try {
     const updatedUser = await res.user.save();
