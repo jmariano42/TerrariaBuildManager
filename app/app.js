@@ -150,7 +150,16 @@ function initAboutListeners() {
 
 function initNewBuildListeners() {}
 
+function initEditBuildListeners() {}
+
 function initProfileListeners() {
+  $(".profile-build").click(function (value) {
+    console.log(value);
+    $.get("../views/edit-build.html", function (edit_build) {
+      $(".wrapper").html(edit_build);
+      initEditBuildListeners();
+    });
+  });
   $(".profile-back-button").click(function () {
     let page = "Main Menu";
     switchPage(page);
@@ -189,10 +198,6 @@ function addUserProfileData() {
     </div>
     `);
   });
-
-  ratings.forEach(async (rating) => {
-    sum = await sumFunction(sum, rating);
-  });
 }
 
 function sendEmail(name, subject, message) {
@@ -227,8 +232,8 @@ function loadAbout() {
 function loadProfile() {
   $.get("../views/profile.html", function (profile) {
     $(".wrapper").html(profile);
-    initProfileListeners();
     addUserProfileData();
+    initProfileListeners();
   });
 }
 

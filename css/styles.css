@@ -499,6 +499,7 @@ p {
   border-radius: 10px;
   margin-bottom: 10px;
   position: relative;
+  cursor: pointer;
 }
 
 .profile-build p {
