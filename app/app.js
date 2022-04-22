@@ -46,7 +46,7 @@ function initLoginListeners() {
     let page = "Landing Menu";
     switchPage(page);
   });
-  $(".login-submit-btn").click(function (value) {
+  $(".login-submit-button").click(function (value) {
     //retrieve user input
     let username = $("#username").val();
     let password = $("#password").val();
@@ -142,7 +142,7 @@ function initMainMenuListeners() {
 }
 
 function initAboutListeners() {
-  $(".about-back-btn").click(function (value) {
+  $(".about-back-button").click(function (value) {
     let page = "Main Menu";
     switchPage(page);
   });
@@ -167,10 +167,32 @@ function addUserProfileData() {
   let name = currentUser.first_name + " " + currentUser.last_name;
   let email = currentUser.email;
   let username = currentUser.username;
-  console.log(name, email, username);
+  let builds = currentUser.builds;
+  console.log(name, email, username, builds);
   $("#profile-name").append(name);
   $("#profile-email").append(email);
   $("#profile-username").append(username);
+
+  builds.forEach((build) => {
+    $(".profile-builds-wrapper").append(`
+    <div class="profile-build">
+      <div class="profile-build-image"></div>
+      <div class="profile-build-name">
+        <p>${build.name}</p>
+      </div>
+      <div class="profile-build-description">
+        <p>${build.description}</p>
+      </div>
+      <div class="profile-build-checkpoint">
+        <p>${build.game_checkpoint}</p>
+      </div>
+    </div>
+    `);
+  });
+
+  ratings.forEach(async (rating) => {
+    sum = await sumFunction(sum, rating);
+  });
 }
 
 function sendEmail(name, subject, message) {
