@@ -14,10 +14,6 @@ db.once("open", () => console.log("Connected to Database"));
 
 app.use(express.json());
 
-//items testing router
-const itemsRouter = require("./routes/items");
-app.use("/items", itemsRouter);
-
 //accessories router
 const accessoriesRouter = require("./routes/accessories");
 app.use("/accessories", accessoriesRouter);
