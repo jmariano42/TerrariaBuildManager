@@ -148,27 +148,45 @@ function initAboutListeners() {
   });
 }
 
-function initNewBuildListeners() {}
+function initNewBuildListeners() {
+  $(".build-back-button").click(function () {
+    let page = "Profile";
+    switchPage(page);
+  });
+  $(".build-save-button").click(function () {
+    $.get("../views/new-build.html", function (new_build) {
+      $(".wrapper").html(new_build);
+      initNewBuildListeners();
+    });
+  });
+}
 
-function initEditBuildListeners() {}
+function initEditBuildListeners() {
+  $(".build-back-button").click(function () {
+    let page = "Profile";
+    switchPage(page);
+  });
+  $(".build-save-button").click(function () {
+    $.get("../views/new-build.html", function (new_build) {
+      $(".wrapper").html(new_build);
+      initNewBuildListeners();
+    });
+  });
+}
 
 function initProfileListeners() {
   $(".profile-build").click(function (value) {
     console.log(value);
-    $.get("../views/edit-build.html", function (edit_build) {
-      $(".wrapper").html(edit_build);
-      initEditBuildListeners();
-    });
+    let page = "Edit Build";
+    switchPage(page);
   });
   $(".profile-back-button").click(function () {
     let page = "Main Menu";
     switchPage(page);
   });
   $(".profile-new-button").click(function () {
-    $.get("../views/new-build.html", function (new_build) {
-      $(".wrapper").html(new_build);
-      initNewBuildListeners();
-    });
+    let page = "New Build";
+    switchPage(page);
   });
 }
 
@@ -237,6 +255,20 @@ function loadProfile() {
   });
 }
 
+function loadNewBuild() {
+  $.get("../views/new-build.html", function (new_build) {
+    $(".wrapper").html(new_build);
+    initNewBuildListeners();
+  });
+}
+
+function loadEditBuild() {
+  $.get("../views/edit-build.html", function (edit_build) {
+    $(".wrapper").html(edit_build);
+    initEditBuildListeners();
+  });
+}
+
 function loadContact() {
   $.get("../views/contact.html", function (contact) {
     $(".wrapper").html(contact);
@@ -280,6 +312,12 @@ function switchPage(page) {
   } else if (page == "Profile") {
     $(".wrapper").empty();
     loadProfile();
+  } else if (page == "New Build") {
+    $(".wrapper").empty();
+    loadNewBuild();
+  } else if (page == "Edit Build") {
+    $(".wrapper").empty();
+    loadEditBuild();
   } else if (page == "Contact") {
     $(".wrapper").empty();
     loadContact();
