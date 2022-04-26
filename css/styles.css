@@ -649,6 +649,7 @@ p {
   background-color: rgba(61, 66, 131, .75);
   border: 2px solid rgba(34, 40, 66, 1);
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .build-equipped-items-wrapper {
@@ -670,6 +671,7 @@ p {
   background-color: rgba(56, 107, 72, .75);
   border: 2px solid rgba(34, 67, 46, 1);
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .build-back-button {

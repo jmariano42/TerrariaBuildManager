@@ -161,6 +161,27 @@ function initNewBuildListeners() {
   });
 }
 
+function addNewBuildData() {
+  fetch("http://localhost:3000/helmets")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json);
+      let html = "";
+      json.forEach((option) => console.log(option));
+      json.forEach(
+        (option) =>
+          (html += `<div id=${option._id} class="build-slot-option"><img src="${option.image}" /></div>`)
+      );
+      $(".build-slot-options").append(html);
+    })
+    .catch((err) => console.error(`Fetch problem: ${err.message}`));
+}
+
 function initEditBuildListeners() {
   $(".build-back-button").click(function () {
     let page = "Profile";
@@ -173,6 +194,8 @@ function initEditBuildListeners() {
     });
   });
 }
+
+function addUserBuildData() {}
 
 function initProfileListeners() {
   $(".profile-build").click(function (value) {
@@ -258,6 +281,7 @@ function loadProfile() {
 function loadNewBuild() {
   $.get("../views/new-build.html", function (new_build) {
     $(".wrapper").html(new_build);
+    addNewBuildData();
     initNewBuildListeners();
   });
 }
@@ -265,6 +289,7 @@ function loadNewBuild() {
 function loadEditBuild() {
   $.get("../views/edit-build.html", function (edit_build) {
     $(".wrapper").html(edit_build);
+    addUserBuildData();
     initEditBuildListeners();
   });
 }

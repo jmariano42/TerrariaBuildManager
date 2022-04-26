@@ -2,6 +2,20 @@ const express = require("express");
 const router = express.Router();
 const Helmet = require("../models/helmet");
 
+router.all("/", function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-MEthods",
+    "PATCH, POST, PUT, DELETE, GET, OPTIONS"
+  );
+  res.header("Access-Control-Request-Method", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
+});
+
 //Getting all helmets
 router.get("/", async (req, res) => {
   try {
