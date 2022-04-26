@@ -641,6 +641,9 @@ p {
 .build-slot-options {
   height: 527px;
   overflow: scroll;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .build-slot-option {
@@ -650,6 +653,14 @@ p {
   border: 2px solid rgba(34, 40, 66, 1);
   border-radius: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.build-slot-option img {
+  width: 50%;
+  height: 50%;
 }
 
 .build-equipped-items-wrapper {

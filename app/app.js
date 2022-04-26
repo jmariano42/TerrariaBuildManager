@@ -149,6 +149,36 @@ function initAboutListeners() {
 }
 
 function initNewBuildListeners() {
+  $("#equipped-head").click(function () {
+    console.log("display helmets");
+  });
+  $("#equipped-chest").click(function () {
+    console.log("display chestplates");
+  });
+  $("#equipped-legs").click(function () {
+    console.log("display leggings");
+  });
+  $("#equipped-accessory1").click(function () {
+    console.log("display accessories");
+  });
+  $("#equipped-accessory2").click(function () {
+    console.log("display accessories");
+  });
+  $("#equipped-accessory3").click(function () {
+    console.log("display accessories");
+  });
+  $("#equipped-accessory4").click(function () {
+    console.log("display accessories");
+  });
+  $("#equipped-accessory5").click(function () {
+    console.log("display accessories");
+  });
+  $("#equipped-accessory6").click(function () {
+    console.log("display accessories");
+  });
+  $("#equipped-accessory7").click(function () {
+    console.log("display accessories");
+  });
   $(".build-back-button").click(function () {
     let page = "Profile";
     switchPage(page);
