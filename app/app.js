@@ -559,18 +559,85 @@ function addUserBuildData() {
       initAddToBuildListeners("helmet");
     })
     .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  $("#equpped-head").innerHTML(`<img src=${currentBuild.helmet.image} />`);
 }
 
 function initProfileListeners() {
   $(".profile-build").click(function (value) {
     buildName = this.getAttribute("data-build-name");
-    currentBuild.name = buildName;
-    buildDescription = this.getAttribute("data-build-description");
-    currentBuild.description = buildDescription;
-    buildCheckpoint = this.getAttribute("data-build-gameCheckpoint");
-    currentBuild.game_checkpoint = buildCheckpoint;
-    buildItems = this.getAttribute("data-build-items");
-    console.log(buildItems);
+    let build = currentUser.builds.find((build) => build.name == buildName);
+    console.log(build);
+    fetch("http://localhost:3000/helmets")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        currentBuild.helmet = json.find(
+          (helmet) => helmet.id == build.items.helmet
+        );
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+    fetch("http://localhost:3000/chestplates")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        currentBuild.chestplate = json.find(
+          (chestplate) => chestplate.id == build.items.chestplate
+        );
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+    fetch("http://localhost:3000/leggings")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        currentBuild.leggings = json.find(
+          (legging) => legging.id == build.items.leggings
+        );
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+    let accessories = "";
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        currentBuild.accessory1 = json.find(
+          (accessory) => accessory.id == build.items.accessory1
+        );
+        currentBuild.accessory2 = json.find(
+          (accessory) => accessory.id == build.items.accessory2
+        );
+        currentBuild.accessory3 = json.find(
+          (accessory) => accessory.id == build.items.accessory3
+        );
+        currentBuild.accessory4 = json.find(
+          (accessory) => accessory.id == build.items.accessory4
+        );
+        currentBuild.accessory5 = json.find(
+          (accessory) => accessory.id == build.items.accessory5
+        );
+        currentBuild.accessory6 = json.find(
+          (accessory) => accessory.id == build.items.accessory6
+        );
+        currentBuild.accessory7 = json.find(
+          (accessory) => accessory.id == build.items.accessory7
+        );
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
     console.log(currentBuild);
     let page = "Edit Build";
     switchPage(page);
