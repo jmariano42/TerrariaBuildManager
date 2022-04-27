@@ -683,6 +683,14 @@ p {
   border: 2px solid rgba(34, 67, 46, 1);
   border-radius: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.build-equipped-item-slot img {
+  width: 50%;
+  height: 50%;
 }
 
 .build-back-button {

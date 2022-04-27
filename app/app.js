@@ -8,6 +8,19 @@ const currentUser = {
   builds: null,
 };
 
+const currentBuild = {
+  helmet: null,
+  chestplate: null,
+  leggings: null,
+  accessory1: null,
+  accessory2: null,
+  accessory3: null,
+  accessory4: null,
+  accessory5: null,
+  accessory6: null,
+  accessory7: null,
+};
+
 //function checks inputted user credentials
 function authenicateUser(users, username, password) {
   console.log(currentUser);
@@ -151,33 +164,213 @@ function initAboutListeners() {
 function initNewBuildListeners() {
   $("#equipped-head").click(function () {
     console.log("display helmets");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/helmets")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("helmet");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-chest").click(function () {
     console.log("display chestplates");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/chestplates")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("shirt");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-legs").click(function () {
     console.log("display leggings");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/leggings")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("pants");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory1").click(function () {
     console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory1");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory2").click(function () {
     console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory2");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory3").click(function () {
     console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory3");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory4").click(function () {
     console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory4");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory5").click(function () {
     console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory5");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory6").click(function () {
     console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory6");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory7").click(function () {
     console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory7");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $(".build-back-button").click(function () {
     let page = "Profile";
@@ -200,16 +393,82 @@ function addNewBuildData() {
       return response.json();
     })
     .then((json) => {
-      console.log(json);
       let html = "";
-      json.forEach((option) => console.log(option));
       json.forEach(
         (option) =>
-          (html += `<div id=${option._id} class="build-slot-option"><img src="${option.image}" /></div>`)
+          (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
       );
       $(".build-slot-options").append(html);
+      initAddToBuildListeners("helmet");
     })
     .catch((err) => console.error(`Fetch problem: ${err.message}`));
+}
+
+function initAddToBuildListeners(slot) {
+  $(".build-slot-option").click(function () {
+    let selectedItemId = `${this.id}`;
+    let selectedItemImage = `${this.title}`;
+    let selectedItem = {
+      id: selectedItemId,
+      image: selectedItemImage,
+    };
+    console.log(selectedItemId);
+    console.log(selectedItemImage);
+    console.log(selectedItem);
+    if (slot == "helmet") {
+      currentBuild.helmet = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-head").empty();
+      $("#equipped-head").append(html);
+    } else if (slot == "shirt") {
+      currentBuild.chestplate = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-chest").empty();
+      $("#equipped-chest").append(html);
+    } else if (slot == "pants") {
+      currentBuild.leggings = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-legs").empty();
+      $("#equipped-legs").append(html);
+    } else if (slot == "accessory1") {
+      console.log("acc1");
+      currentBuild.accessory1 = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-accessory1").empty();
+      $("#equipped-accessory1").append(html);
+    } else if (slot == "accessory2") {
+      currentBuild.accessory2 = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-accessory2").empty();
+      $("#equipped-accessory2").append(html);
+    } else if (slot == "accessory3") {
+      currentBuild.accessory3 = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-accessory3").empty();
+      $("#equipped-accessory3").append(html);
+    } else if (slot == "accessory4") {
+      currentBuild.accessory4 = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-accessory4").empty();
+      $("#equipped-accessory4").append(html);
+    } else if (slot == "accessory5") {
+      currentBuild.accessory5 = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-accessory5").empty();
+      $("#equipped-accessory5").append(html);
+    } else if (slot == "accessory6") {
+      currentBuild.accessory6 = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-accessory6").empty();
+      $("#equipped-accessory6").append(html);
+    } else if (slot == "accessory7") {
+      currentBuild.accessory7 = selectedItem;
+      let html = `<img src=${selectedItemImage} />`;
+      $("#equipped-accessory7").empty();
+      $("#equipped-accessory7").append(html);
+    }
+    console.log(currentBuild);
+  });
 }
 
 function initEditBuildListeners() {
