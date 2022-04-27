@@ -541,11 +541,37 @@ function initEditBuildListeners() {
   });
 }
 
-function addUserBuildData() {}
+function addUserBuildData() {
+  fetch("http://localhost:3000/helmets")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((json) => {
+      let html = "";
+      json.forEach(
+        (option) =>
+          (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+      );
+      $(".build-slot-options").append(html);
+      initAddToBuildListeners("helmet");
+    })
+    .catch((err) => console.error(`Fetch problem: ${err.message}`));
+}
 
 function initProfileListeners() {
   $(".profile-build").click(function (value) {
-    console.log(value);
+    buildName = this.getAttribute("data-build-name");
+    currentBuild.name = buildName;
+    buildDescription = this.getAttribute("data-build-description");
+    currentBuild.description = buildDescription;
+    buildCheckpoint = this.getAttribute("data-build-gameCheckpoint");
+    currentBuild.game_checkpoint = buildCheckpoint;
+    buildItems = this.getAttribute("data-build-items");
+    console.log(buildItems);
+    console.log(currentBuild);
     let page = "Edit Build";
     switchPage(page);
   });
@@ -571,7 +597,7 @@ function addUserProfileData() {
 
   builds.forEach((build) => {
     $(".profile-builds-wrapper").append(`
-    <div class="profile-build">
+    <div class="profile-build" data-build-name="${build.name}" data-build-description="${build.description}" data-build-gameCheckpoint="${build.game_checkpoint}" data-build-items=${build.items}>
       <div class="profile-build-image"></div>
       <div class="profile-build-name">
         <p>${build.name}</p>
