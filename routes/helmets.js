@@ -5,7 +5,7 @@ const Helmet = require("../models/helmet");
 router.all("/", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
-    "Access-Control-Allow-MEthods",
+    "Access-Control-Allow-Methods",
     "PATCH, POST, PUT, DELETE, GET, OPTIONS"
   );
   res.header("Access-Control-Request-Method", "*");

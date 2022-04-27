@@ -115,7 +115,7 @@ function initCreateAccountListeners() {
     let page = "Landing Menu";
     switchPage(page);
   });
-  $(".create-account-submit-btn").click(function (value) {
+  $(".create-account-submit-button").click(function (value) {
     let fName = $("#first_name").val();
     let lName = $("#last_name").val();
     let email = $("#email").val();
@@ -123,6 +123,7 @@ function initCreateAccountListeners() {
     let password = $("#password").val();
     let builds = [];
     console.log(fName, lName, email, username, password, builds);
+    createNewUser(fName, lName, email, username, password, builds);
     let page = "Main Menu";
     switchPage(page);
   });
@@ -176,7 +177,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("helmet");
@@ -197,7 +198,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("shirt");
@@ -218,7 +219,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("pants");
@@ -239,7 +240,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("accessory1");
@@ -260,7 +261,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("accessory2");
@@ -281,7 +282,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("accessory3");
@@ -302,7 +303,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("accessory4");
@@ -323,7 +324,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("accessory5");
@@ -344,7 +345,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("accessory6");
@@ -365,7 +366,7 @@ function initNewBuildListeners() {
         let html = "";
         json.forEach(
           (option) =>
-            (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
         );
         $(".build-slot-options").append(html);
         initAddToBuildListeners("accessory7");
@@ -377,10 +378,34 @@ function initNewBuildListeners() {
     switchPage(page);
   });
   $(".build-save-button").click(function () {
-    $.get("../views/new-build.html", function (new_build) {
-      $(".wrapper").html(new_build);
-      initNewBuildListeners();
-    });
+    let buildName = $("#build_name").val();
+    let buildDescription = $("#build_description").val();
+    let buildCheckpoint = $("#build_checkpoint").val();
+    let newBuild = {
+      name: buildName,
+      description: buildDescription,
+      game_checkpoint: buildCheckpoint,
+      items: currentBuild,
+    };
+    currentUser.builds.push(newBuild);
+    console.log(currentUser);
+
+    fetch(`http://localhost:3000/users/${currentUser._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        let page = "Profile";
+        switchPage(page);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   });
 }
 
@@ -396,7 +421,7 @@ function addNewBuildData() {
       let html = "";
       json.forEach(
         (option) =>
-          (html += `<div id=${option._id} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+          (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
       );
       $(".build-slot-options").append(html);
       initAddToBuildListeners("helmet");
@@ -407,65 +432,97 @@ function addNewBuildData() {
 function initAddToBuildListeners(slot) {
   $(".build-slot-option").click(function () {
     let selectedItemId = `${this.id}`;
+    let selectedItemName = this.getAttribute("data-option-name");
+    let selectedItemDefense = this.getAttribute("data-option-defense");
+    selectedItemDefense = parseInt(selectedItemDefense);
     let selectedItemImage = `${this.title}`;
     let selectedItem = {
       id: selectedItemId,
+      name: selectedItemName,
+      defense: selectedItemDefense,
       image: selectedItemImage,
     };
-    console.log(selectedItemId);
-    console.log(selectedItemImage);
-    console.log(selectedItem);
     if (slot == "helmet") {
       currentBuild.helmet = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-head").empty();
       $("#equipped-head").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-helmet").empty();
+      $("#build-info-helmet").append(html);
     } else if (slot == "shirt") {
       currentBuild.chestplate = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-chest").empty();
       $("#equipped-chest").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-chestplate").empty();
+      $("#build-info-chestplate").append(html);
     } else if (slot == "pants") {
       currentBuild.leggings = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-legs").empty();
       $("#equipped-legs").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-leggings").empty();
+      $("#build-info-leggings").append(html);
     } else if (slot == "accessory1") {
       console.log("acc1");
       currentBuild.accessory1 = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory1").empty();
       $("#equipped-accessory1").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-accessory1").empty();
+      $("#build-info-accessory1").append(html);
     } else if (slot == "accessory2") {
       currentBuild.accessory2 = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory2").empty();
       $("#equipped-accessory2").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-accessory2").empty();
+      $("#build-info-accessory2").append(html);
     } else if (slot == "accessory3") {
       currentBuild.accessory3 = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory3").empty();
       $("#equipped-accessory3").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-accessory3").empty();
+      $("#build-info-accessory3").append(html);
     } else if (slot == "accessory4") {
       currentBuild.accessory4 = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory4").empty();
       $("#equipped-accessory4").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-accessory4").empty();
+      $("#build-info-accessory4").append(html);
     } else if (slot == "accessory5") {
       currentBuild.accessory5 = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory5").empty();
       $("#equipped-accessory5").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-accessory5").empty();
+      $("#build-info-accessory5").append(html);
     } else if (slot == "accessory6") {
       currentBuild.accessory6 = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory6").empty();
       $("#equipped-accessory6").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-accessory6").empty();
+      $("#build-info-accessory6").append(html);
     } else if (slot == "accessory7") {
       currentBuild.accessory7 = selectedItem;
-      let html = `<img src=${selectedItemImage} />`;
+      let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory7").empty();
       $("#equipped-accessory7").append(html);
+      html = `<p>Name: ${selectedItem.name}</p><p>Defense: ${selectedItem.defense}</p>`;
+      $("#build-info-accessory7").empty();
+      $("#build-info-accessory7").append(html);
     }
     console.log(currentBuild);
   });
