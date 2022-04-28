@@ -406,12 +406,16 @@ function initNewBuildListeners() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        currentUser.builds = data.builds;
+        console.log(currentUser);
         let page = "Profile";
         switchPage(page);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+
+    console.log(currentUser);
   });
 }
 
@@ -900,6 +904,7 @@ function addUserBuildData() {
       );
       $(".build-slot-options").append(html);
       initAddToBuildListeners("helmet");
+      console.log(currentBuild);
       if (currentBuild.helmet != null) {
         $("#equipped-head").append(`<img src=${currentBuild.helmet.image} />`);
         $("#build-info-helmet").append(
