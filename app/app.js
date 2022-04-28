@@ -530,15 +530,269 @@ function initAddToBuildListeners(slot) {
 }
 
 function initEditBuildListeners() {
+  $("#equipped-head").click(function () {
+    console.log("display helmets");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/helmets")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("helmet");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-chest").click(function () {
+    console.log("display chestplates");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/chestplates")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("shirt");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-legs").click(function () {
+    console.log("display leggings");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/leggings")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("pants");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-accessory1").click(function () {
+    console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory1");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-accessory2").click(function () {
+    console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory2");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-accessory3").click(function () {
+    console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory3");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-accessory4").click(function () {
+    console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory4");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-accessory5").click(function () {
+    console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory5");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-accessory6").click(function () {
+    console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory6");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
+  $("#equipped-accessory7").click(function () {
+    console.log("display accessories");
+    $(".build-slot-options").empty();
+    fetch("http://localhost:3000/accessories")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        let html = "";
+        json.forEach(
+          (option) =>
+            (html += `<div id=${option._id} data-option-name="${option.name}" data-option-defense=${option.defense} title=${option.image} class="build-slot-option"><img src="${option.image}" /></div>`)
+        );
+        $(".build-slot-options").append(html);
+        initAddToBuildListeners("accessory7");
+      })
+      .catch((err) => console.error(`Fetch problem: ${err.message}`));
+  });
   $(".build-back-button").click(function () {
     let page = "Profile";
     switchPage(page);
   });
   $(".build-save-button").click(function () {
-    $.get("../views/new-build.html", function (new_build) {
-      $(".wrapper").html(new_build);
-      initNewBuildListeners();
-    });
+    let buildName = currentBuild.name;
+    if ($("#build_name").val() == "") {
+    } else {
+      buildName = $("#build_name").val();
+    }
+    let buildDescription = currentBuild.description;
+    if ($("#build_description").val() !== "") {
+    } else {
+      buildDescription = $("#build_description").val();
+    }
+    let buildCheckpoint = currentBuild.game_checkpoint;
+    if ($("#build_checkpoint").val() !== "") {
+    } else {
+      buildCheckpoint = $("#build_checkpoint");
+    }
+    console.log(currentBuild);
+    let newBuild = {
+      name: buildName,
+      description: buildDescription,
+      game_checkpoint: buildCheckpoint,
+      items: currentBuild,
+    };
+    console.log(newBuild);
+    let buildIndex = currentUser.builds.findIndex(
+      (build) => (build.name = newBuild.name)
+    );
+    let builds = currentUser.builds;
+    builds[buildIndex] = newBuild;
+    console.log(currentUser);
+
+    /*
+    fetch(`http://localhost:3000/users/${currentUser._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        let page = "Profile";
+        switchPage(page);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+      */
   });
 }
 
@@ -558,62 +812,84 @@ function addUserBuildData() {
       );
       $(".build-slot-options").append(html);
       initAddToBuildListeners("helmet");
-      $("#equipped-head").append(`<img src=${currentBuild.helmet.image} />`);
-      $("#equipped-chest").append(
-        `<img src=${currentBuild.chestplate.image} />`
-      );
-      $("#equipped-legs").append(`<img src=${currentBuild.leggings.image} />`);
-      $("#equipped-accessory1").append(
-        `<img src=${currentBuild.accessory1.image} />`
-      );
-      $("#equipped-accessory2").append(
-        `<img src=${currentBuild.accessory2.image} />`
-      );
-      $("#equipped-accessory3").append(
-        `<img src=${currentBuild.accessory3.image} />`
-      );
-      $("#equipped-accessory4").append(
-        `<img src=${currentBuild.accessory4.image} />`
-      );
-      $("#equipped-accessory5").append(
-        `<img src=${currentBuild.accessory5.image} />`
-      );
-      $("#equipped-accessory6").append(
-        `<img src=${currentBuild.accessory6.image} />`
-      );
-      $("#equipped-accessory7").append(
-        `<img src=${currentBuild.accessory7.image} />`
-      );
-      $("#build-info-helmet").append(
-        (html = `<p>Name: ${currentBuild.helmet.name}</p><p>Defense: ${currentBuild.helmet.defense}</p>`)
-      );
-      $("#build-info-chestplate").append(
-        (html = `<p>Name: ${currentBuild.chestplate.name}</p><p>Defense: ${currentBuild.chestplate.defense}</p>`)
-      );
-      $("#build-info-leggings").append(
-        (html = `<p>Name: ${currentBuild.leggings.name}</p><p>Defense: ${currentBuild.leggings.defense}</p>`)
-      );
-      $("#build-info-accessory1").append(
-        (html = `<p>Name: ${currentBuild.accessory1.name}</p><p>Defense: ${currentBuild.accessory1.defense}</p>`)
-      );
-      $("#build-info-accessory2").append(
-        (html = `<p>Name: ${currentBuild.accessory2.name}</p><p>Defense: ${currentBuild.accessory2.defense}</p>`)
-      );
-      $("#build-info-accessory3").append(
-        (html = `<p>Name: ${currentBuild.accessory3.name}</p><p>Defense: ${currentBuild.accessory3.defense}</p>`)
-      );
-      $("#build-info-accessory4").append(
-        (html = `<p>Name: ${currentBuild.accessory4.name}</p><p>Defense: ${currentBuild.accessory4.defense}</p>`)
-      );
-      $("#build-info-accessory5").append(
-        (html = `<p>Name: ${currentBuild.accessory5.name}</p><p>Defense: ${currentBuild.accessory5.defense}</p>`)
-      );
-      $("#build-info-accessory6").append(
-        (html = `<p>Name: ${currentBuild.accessory6.name}</p><p>Defense: ${currentBuild.accessory6.defense}</p>`)
-      );
-      $("#build-info-accessory7").append(
-        (html = `<p>Name: ${currentBuild.accessory7.name}</p><p>Defense: ${currentBuild.accessory7.defense}</p>`)
-      );
+      if (currentBuild.helmet != null) {
+        $("#equipped-head").append(`<img src=${currentBuild.helmet.image} />`);
+        $("#build-info-helmet").append(
+          (html = `<p>Name: ${currentBuild.helmet.name}</p><p>Defense: ${currentBuild.helmet.defense}</p>`)
+        );
+      }
+      if (currentBuild.chestplate != null) {
+        $("#equipped-chest").append(
+          `<img src=${currentBuild.chestplate.image} />`
+        );
+        $("#build-info-chestplate").append(
+          (html = `<p>Name: ${currentBuild.chestplate.name}</p><p>Defense: ${currentBuild.chestplate.defense}</p>`)
+        );
+      }
+      if (currentBuild.leggings != null) {
+        $("#equipped-legs").append(
+          `<img src=${currentBuild.leggings.image} />`
+        );
+        $("#build-info-leggings").append(
+          (html = `<p>Name: ${currentBuild.leggings.name}</p><p>Defense: ${currentBuild.leggings.defense}</p>`)
+        );
+      }
+      if (currentBuild.accessory1 != null) {
+        $("#equipped-accessory1").append(
+          `<img src=${currentBuild.accessory1.image} />`
+        );
+        $("#build-info-accessory1").append(
+          (html = `<p>Name: ${currentBuild.accessory1.name}</p><p>Defense: ${currentBuild.accessory1.defense}</p>`)
+        );
+      }
+      if (currentBuild.accessory2 != null) {
+        $("#equipped-accessory2").append(
+          `<img src=${currentBuild.accessory2.image} />`
+        );
+        $("#build-info-accessory2").append(
+          (html = `<p>Name: ${currentBuild.accessory2.name}</p><p>Defense: ${currentBuild.accessory2.defense}</p>`)
+        );
+      }
+      if (currentBuild.accessory3 != null) {
+        $("#equipped-accessory3").append(
+          `<img src=${currentBuild.accessory3.image} />`
+        );
+        $("#build-info-accessory3").append(
+          (html = `<p>Name: ${currentBuild.accessory3.name}</p><p>Defense: ${currentBuild.accessory3.defense}</p>`)
+        );
+      }
+      if (currentBuild.accessory4 != null) {
+        $("#equipped-accessory4").append(
+          `<img src=${currentBuild.accessory4.image} />`
+        );
+        $("#build-info-accessory4").append(
+          (html = `<p>Name: ${currentBuild.accessory4.name}</p><p>Defense: ${currentBuild.accessory4.defense}</p>`)
+        );
+      }
+      if (currentBuild.accessory5 != null) {
+        $("#equipped-accessory5").append(
+          `<img src=${currentBuild.accessory5.image} />`
+        );
+        $("#build-info-accessory5").append(
+          (html = `<p>Name: ${currentBuild.accessory5.name}</p><p>Defense: ${currentBuild.accessory5.defense}</p>`)
+        );
+      }
+      if (currentBuild.accessory6 != null) {
+        $("#equipped-accessory6").append(
+          `<img src=${currentBuild.accessory6.image} />`
+        );
+        $("#build-info-accessory6").append(
+          (html = `<p>Name: ${currentBuild.accessory6.name}</p><p>Defense: ${currentBuild.accessory6.defense}</p>`)
+        );
+      }
+      if (currentBuild.accessory7 != null) {
+        $("#equipped-accessory7").append(
+          `<img src=${currentBuild.accessory7.image} />`
+        );
+        $("#build-info-accessory7").append(
+          (html = `<p>Name: ${currentBuild.accessory7.name}</p><p>Defense: ${currentBuild.accessory7.defense}</p>`)
+        );
+      }
     })
     .catch((err) => console.error(`Fetch problem: ${err.message}`));
 }
