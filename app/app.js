@@ -381,6 +381,7 @@ function initNewBuildListeners() {
     let buildName = $("#build_name").val();
     let buildDescription = $("#build_description").val();
     let buildCheckpoint = $("#build_checkpoint").val();
+    console.log(currentBuild);
     let newBuild = {
       name: buildName,
       description: buildDescription,
@@ -443,7 +444,7 @@ function initAddToBuildListeners(slot) {
       image: selectedItemImage,
     };
     if (slot == "helmet") {
-      currentBuild.helmet = selectedItem;
+      currentBuild.helmet = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-head").empty();
       $("#equipped-head").append(html);
@@ -451,7 +452,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-helmet").empty();
       $("#build-info-helmet").append(html);
     } else if (slot == "shirt") {
-      currentBuild.chestplate = selectedItem;
+      currentBuild.chestplate = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-chest").empty();
       $("#equipped-chest").append(html);
@@ -459,7 +460,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-chestplate").empty();
       $("#build-info-chestplate").append(html);
     } else if (slot == "pants") {
-      currentBuild.leggings = selectedItem;
+      currentBuild.leggings = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-legs").empty();
       $("#equipped-legs").append(html);
@@ -468,7 +469,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-leggings").append(html);
     } else if (slot == "accessory1") {
       console.log("acc1");
-      currentBuild.accessory1 = selectedItem;
+      currentBuild.accessory1 = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory1").empty();
       $("#equipped-accessory1").append(html);
@@ -476,7 +477,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-accessory1").empty();
       $("#build-info-accessory1").append(html);
     } else if (slot == "accessory2") {
-      currentBuild.accessory2 = selectedItem;
+      currentBuild.accessory2 = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory2").empty();
       $("#equipped-accessory2").append(html);
@@ -484,7 +485,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-accessory2").empty();
       $("#build-info-accessory2").append(html);
     } else if (slot == "accessory3") {
-      currentBuild.accessory3 = selectedItem;
+      currentBuild.accessory3 = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory3").empty();
       $("#equipped-accessory3").append(html);
@@ -492,7 +493,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-accessory3").empty();
       $("#build-info-accessory3").append(html);
     } else if (slot == "accessory4") {
-      currentBuild.accessory4 = selectedItem;
+      currentBuild.accessory4 = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory4").empty();
       $("#equipped-accessory4").append(html);
@@ -500,7 +501,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-accessory4").empty();
       $("#build-info-accessory4").append(html);
     } else if (slot == "accessory5") {
-      currentBuild.accessory5 = selectedItem;
+      currentBuild.accessory5 = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory5").empty();
       $("#equipped-accessory5").append(html);
@@ -508,7 +509,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-accessory5").empty();
       $("#build-info-accessory5").append(html);
     } else if (slot == "accessory6") {
-      currentBuild.accessory6 = selectedItem;
+      currentBuild.accessory6 = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory6").empty();
       $("#equipped-accessory6").append(html);
@@ -516,7 +517,7 @@ function initAddToBuildListeners(slot) {
       $("#build-info-accessory6").empty();
       $("#build-info-accessory6").append(html);
     } else if (slot == "accessory7") {
-      currentBuild.accessory7 = selectedItem;
+      currentBuild.accessory7 = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory7").empty();
       $("#equipped-accessory7").append(html);
@@ -557,12 +558,67 @@ function addUserBuildData() {
       );
       $(".build-slot-options").append(html);
       initAddToBuildListeners("helmet");
+      $("#equipped-head").append(`<img src=${currentBuild.helmet.image} />`);
+      $("#equipped-chest").append(
+        `<img src=${currentBuild.chestplate.image} />`
+      );
+      $("#equipped-legs").append(`<img src=${currentBuild.leggings.image} />`);
+      $("#equipped-accessory1").append(
+        `<img src=${currentBuild.accessory1.image} />`
+      );
+      $("#equipped-accessory2").append(
+        `<img src=${currentBuild.accessory2.image} />`
+      );
+      $("#equipped-accessory3").append(
+        `<img src=${currentBuild.accessory3.image} />`
+      );
+      $("#equipped-accessory4").append(
+        `<img src=${currentBuild.accessory4.image} />`
+      );
+      $("#equipped-accessory5").append(
+        `<img src=${currentBuild.accessory5.image} />`
+      );
+      $("#equipped-accessory6").append(
+        `<img src=${currentBuild.accessory6.image} />`
+      );
+      $("#equipped-accessory7").append(
+        `<img src=${currentBuild.accessory7.image} />`
+      );
+      $("#build-info-helmet").append(
+        (html = `<p>Name: ${currentBuild.helmet.name}</p><p>Defense: ${currentBuild.helmet.defense}</p>`)
+      );
+      $("#build-info-chestplate").append(
+        (html = `<p>Name: ${currentBuild.chestplate.name}</p><p>Defense: ${currentBuild.chestplate.defense}</p>`)
+      );
+      $("#build-info-leggings").append(
+        (html = `<p>Name: ${currentBuild.leggings.name}</p><p>Defense: ${currentBuild.leggings.defense}</p>`)
+      );
+      $("#build-info-accessory1").append(
+        (html = `<p>Name: ${currentBuild.accessory1.name}</p><p>Defense: ${currentBuild.accessory1.defense}</p>`)
+      );
+      $("#build-info-accessory2").append(
+        (html = `<p>Name: ${currentBuild.accessory2.name}</p><p>Defense: ${currentBuild.accessory2.defense}</p>`)
+      );
+      $("#build-info-accessory3").append(
+        (html = `<p>Name: ${currentBuild.accessory3.name}</p><p>Defense: ${currentBuild.accessory3.defense}</p>`)
+      );
+      $("#build-info-accessory4").append(
+        (html = `<p>Name: ${currentBuild.accessory4.name}</p><p>Defense: ${currentBuild.accessory4.defense}</p>`)
+      );
+      $("#build-info-accessory5").append(
+        (html = `<p>Name: ${currentBuild.accessory5.name}</p><p>Defense: ${currentBuild.accessory5.defense}</p>`)
+      );
+      $("#build-info-accessory6").append(
+        (html = `<p>Name: ${currentBuild.accessory6.name}</p><p>Defense: ${currentBuild.accessory6.defense}</p>`)
+      );
+      $("#build-info-accessory7").append(
+        (html = `<p>Name: ${currentBuild.accessory7.name}</p><p>Defense: ${currentBuild.accessory7.defense}</p>`)
+      );
     })
     .catch((err) => console.error(`Fetch problem: ${err.message}`));
-  $("#equpped-head").innerHTML(`<img src=${currentBuild.helmet.image} />`);
 }
 
-function initProfileListeners() {
+function initProfileBuildListeners() {
   $(".profile-build").click(function (value) {
     buildName = this.getAttribute("data-build-name");
     let build = currentUser.builds.find((build) => build.name == buildName);
@@ -576,7 +632,7 @@ function initProfileListeners() {
       })
       .then((json) => {
         currentBuild.helmet = json.find(
-          (helmet) => helmet.id == build.items.helmet
+          (helmet) => helmet._id === build.items.helmet
         );
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
@@ -589,7 +645,7 @@ function initProfileListeners() {
       })
       .then((json) => {
         currentBuild.chestplate = json.find(
-          (chestplate) => chestplate.id == build.items.chestplate
+          (chestplate) => chestplate._id === build.items.chestplate
         );
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
@@ -602,11 +658,10 @@ function initProfileListeners() {
       })
       .then((json) => {
         currentBuild.leggings = json.find(
-          (legging) => legging.id == build.items.leggings
+          (legging) => legging._id === build.items.leggings
         );
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
-    let accessories = "";
     fetch("http://localhost:3000/accessories")
       .then((response) => {
         if (!response.ok) {
@@ -616,25 +671,25 @@ function initProfileListeners() {
       })
       .then((json) => {
         currentBuild.accessory1 = json.find(
-          (accessory) => accessory.id == build.items.accessory1
+          (accessory) => accessory._id === build.items.accessory1
         );
         currentBuild.accessory2 = json.find(
-          (accessory) => accessory.id == build.items.accessory2
+          (accessory) => accessory._id === build.items.accessory2
         );
         currentBuild.accessory3 = json.find(
-          (accessory) => accessory.id == build.items.accessory3
+          (accessory) => accessory._id === build.items.accessory3
         );
         currentBuild.accessory4 = json.find(
-          (accessory) => accessory.id == build.items.accessory4
+          (accessory) => accessory._id === build.items.accessory4
         );
         currentBuild.accessory5 = json.find(
-          (accessory) => accessory.id == build.items.accessory5
+          (accessory) => accessory._id === build.items.accessory5
         );
         currentBuild.accessory6 = json.find(
-          (accessory) => accessory.id == build.items.accessory6
+          (accessory) => accessory._id === build.items.accessory6
         );
         currentBuild.accessory7 = json.find(
-          (accessory) => accessory.id == build.items.accessory7
+          (accessory) => accessory._id === build.items.accessory7
         );
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
@@ -642,6 +697,9 @@ function initProfileListeners() {
     let page = "Edit Build";
     switchPage(page);
   });
+}
+
+function initProfileListeners() {
   $(".profile-back-button").click(function () {
     let page = "Main Menu";
     switchPage(page);
@@ -664,7 +722,7 @@ function addUserProfileData() {
 
   builds.forEach((build) => {
     $(".profile-builds-wrapper").append(`
-    <div class="profile-build" data-build-name="${build.name}" data-build-description="${build.description}" data-build-gameCheckpoint="${build.game_checkpoint}" data-build-items=${build.items}>
+    <div class="profile-build" data-build-name="${build.name}">
       <div class="profile-build-image"></div>
       <div class="profile-build-name">
         <p>${build.name}</p>
@@ -678,6 +736,17 @@ function addUserProfileData() {
     </div>
     `);
   });
+
+  currentBuild.helmet = null;
+  currentBuild.chestplate = null;
+  currentBuild.leggings = null;
+  currentBuild.accessory1 = null;
+  currentBuild.accessory2 = null;
+  currentBuild.accessory3 = null;
+  currentBuild.accessory4 = null;
+  currentBuild.accessory5 = null;
+  currentBuild.accessory6 = null;
+  currentBuild.accessory7 = null;
 }
 
 function sendEmail(name, subject, message) {
@@ -713,6 +782,7 @@ function loadProfile() {
   $.get("../views/profile.html", function (profile) {
     $(".wrapper").html(profile);
     addUserProfileData();
+    initProfileBuildListeners();
     initProfileListeners();
   });
 }
@@ -728,8 +798,8 @@ function loadNewBuild() {
 function loadEditBuild() {
   $.get("../views/edit-build.html", function (edit_build) {
     $(".wrapper").html(edit_build);
-    addUserBuildData();
     initEditBuildListeners();
+    addUserBuildData();
   });
 }
 
