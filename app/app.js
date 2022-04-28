@@ -8,6 +8,10 @@ const currentUser = {
   builds: null,
 };
 
+const editBuildName = {
+  name: null,
+};
+
 const currentBuild = {
   helmet: null,
   chestplate: null,
@@ -378,6 +382,7 @@ function initNewBuildListeners() {
     switchPage(page);
   });
   $(".build-save-button").click(function () {
+    console.log("save new build");
     let buildName = $("#build_name").val();
     let buildDescription = $("#build_description").val();
     let buildCheckpoint = $("#build_checkpoint").val();
@@ -468,7 +473,6 @@ function initAddToBuildListeners(slot) {
       $("#build-info-leggings").empty();
       $("#build-info-leggings").append(html);
     } else if (slot == "accessory1") {
-      console.log("acc1");
       currentBuild.accessory1 = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
       $("#equipped-accessory1").empty();
@@ -745,37 +749,122 @@ function initEditBuildListeners() {
     switchPage(page);
   });
   $(".build-save-button").click(function () {
-    let buildName = currentBuild.name;
+    console.log("save build edit");
+    let buildName = editBuildName.name;
+    console.log(buildName);
+    let builds = currentUser.builds;
+    console.log(builds);
+    let buildIndex = builds.findIndex((build) => build.name == buildName);
+    console.log(buildIndex);
+    let oldBuild = builds[buildIndex];
     if ($("#build_name").val() == "") {
+      buildName = oldBuild.name;
     } else {
       buildName = $("#build_name").val();
     }
-    let buildDescription = currentBuild.description;
-    if ($("#build_description").val() !== "") {
+    let buildDescription = "";
+    if ($("#build_description").val() == "") {
+      buildDescription = oldBuild.description;
     } else {
       buildDescription = $("#build_description").val();
     }
-    let buildCheckpoint = currentBuild.game_checkpoint;
-    if ($("#build_checkpoint").val() !== "") {
+    let buildCheckpoint = "";
+    if ($("#build_checkpoint").val() == "") {
+      buildCheckpoint = oldBuild.game_checkpoint;
     } else {
-      buildCheckpoint = $("#build_checkpoint");
+      buildCheckpoint = $("#build_checkpoint").val();
     }
-    console.log(currentBuild);
+    if (currentBuild.helmet == undefined) {
+      buildHelmet = undefined;
+    } else if (currentBuild.helmet._id == undefined) {
+      buildHelmet = currentBuild.helmet;
+    } else {
+      buildHelmet = currentBuild.helmet._id;
+    }
+    if (currentBuild.chestplate == undefined) {
+      buildChestplate = undefined;
+    } else if (currentBuild.chestplate._id == undefined) {
+      buildChestplate = currentBuild.chestplate;
+    } else {
+      buildChestplate = currentBuild.chestplate._id;
+    }
+    if (currentBuild.leggings == undefined) {
+      buildLeggings = undefined;
+    } else if (currentBuild.leggings._id == undefined) {
+      buildLeggings = currentBuild.leggings;
+    } else {
+      buildLeggings = currentBuild.leggings._id;
+    }
+    if (currentBuild.accessory1 == undefined) {
+      buildAccessory1 = undefined;
+    } else if (currentBuild.accessory1._id == undefined) {
+      buildAccessory1 = currentBuild.accessory1;
+    } else {
+      buildAccessory1 = currentBuild.accessory1._id;
+    }
+    if (currentBuild.accessory2 == undefined) {
+      buildAccessory2 = undefined;
+    } else if (currentBuild.accessory2._id == undefined) {
+      buildAccessory2 = currentBuild.accessory2;
+    } else {
+      buildAccessory2 = currentBuild.accessory2._id;
+    }
+    if (currentBuild.accessory3 == undefined) {
+      buildAccessory3 = undefined;
+    } else if (currentBuild.accessory3._id == undefined) {
+      buildAccessory3 = currentBuild.accessory3;
+    } else {
+      buildAccessory3 = currentBuild.accessory3._id;
+    }
+    if (currentBuild.accessory4 == undefined) {
+      buildAccessory4 = undefined;
+    } else if (currentBuild.accessory4._id == undefined) {
+      buildAccessory4 = currentBuild.accessory4;
+    } else {
+      buildAccessory4 = currentBuild.accessory4._id;
+    }
+    if (currentBuild.accessory5 == undefined) {
+      buildAccessory5 = undefined;
+    } else if (currentBuild.accessory5._id == undefined) {
+      buildAccessory5 = currentBuild.accessory5;
+    } else {
+      buildAccessory5 = currentBuild.accessory5._id;
+    }
+    if (currentBuild.accessory6 == undefined) {
+      buildAccessory6 = undefined;
+    } else if (currentBuild.accessory6._id == undefined) {
+      buildAccessory6 = currentBuild.accessory6;
+    } else {
+      buildAccessory6 = currentBuild.accessory6._id;
+    }
+    if (currentBuild.accessory7 == undefined) {
+      buildAccessory7 = undefined;
+    } else if (currentBuild.accessory7._id == undefined) {
+      buildAccessory7 = currentBuild.accessory7;
+    } else {
+      buildAccessory7 = currentBuild.accessory7._id;
+    }
+    buildItems = {
+      helmet: buildHelmet,
+      chestplate: buildChestplate,
+      leggings: buildLeggings,
+      accessory1: buildAccessory1,
+      accessory2: buildAccessory2,
+      accessory3: buildAccessory3,
+      accessory4: buildAccessory4,
+      accessory5: buildAccessory5,
+      accessory6: buildAccessory6,
+      accessory7: buildAccessory7,
+    };
     let newBuild = {
       name: buildName,
       description: buildDescription,
       game_checkpoint: buildCheckpoint,
-      items: currentBuild,
+      items: buildItems,
     };
-    console.log(newBuild);
-    let buildIndex = currentUser.builds.findIndex(
-      (build) => (build.name = newBuild.name)
-    );
-    let builds = currentUser.builds;
     builds[buildIndex] = newBuild;
     console.log(currentUser);
 
-    /*
     fetch(`http://localhost:3000/users/${currentUser._id}`, {
       method: "PATCH",
       headers: {
@@ -792,7 +881,6 @@ function initEditBuildListeners() {
       .catch((error) => {
         console.error("Error:", error);
       });
-      */
   });
 }
 
@@ -897,6 +985,7 @@ function addUserBuildData() {
 function initProfileBuildListeners() {
   $(".profile-build").click(function (value) {
     buildName = this.getAttribute("data-build-name");
+    editBuildName.name = buildName;
     let build = currentUser.builds.find((build) => build.name == buildName);
     console.log(build);
     fetch("http://localhost:3000/helmets")
