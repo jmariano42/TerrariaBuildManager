@@ -108,6 +108,9 @@ function createNewUser(fName, lName, email, username, password, builds) {
     .then((response) => response.json())
     .then((data) => {
       //console.log("Success:", data);
+      currentUser.first_name = fName;
+      currentUser.last_name = lName;
+      currentUser.email = username;
     })
     .catch((error) => {
       console.error("Error:", error);
