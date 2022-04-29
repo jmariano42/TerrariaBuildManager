@@ -751,14 +751,10 @@ p {
 
 .build-slot-options {
   height: 95%;
-  min-width: fit-content;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-.build-slot-options::-webkit-scrollbar { 
-  display: hidden;  /* Safari and Chrome */
+  overflow: scroll;
 }
 
 .build-slot-option {
