@@ -172,6 +172,7 @@ p {
   position: absolute;
   top: 82%;
   left: calc(50% + 14.5px);
+  cursor: pointer;
 }
 
 #login-submit-btn {
@@ -750,14 +751,14 @@ p {
 
 .build-slot-options {
   height: 95%;
-  overflow: scroll;
+  min-width: fit-content;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .build-slot-options::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
+  display: hidden;  /* Safari and Chrome */
 }
 
 .build-slot-option {
@@ -773,7 +774,7 @@ p {
 }
 
 .build-slot-option img {
-  width: 50%;
+  width: fit-content;
   height: 50%;
 }
 
@@ -809,7 +810,7 @@ p {
 }
 
 .build-equipped-item-slot img {
-  width: 50%;
+  width: fit-content;
   height: 50%;
 }
 
