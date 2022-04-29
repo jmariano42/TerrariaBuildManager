@@ -754,7 +754,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .build-slot-option {
