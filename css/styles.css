@@ -57,6 +57,10 @@ p {
   cursor: pointer;
 }
 
+.landing-menu p:hover {
+  color: yellow;
+}
+
 /* Login Page Styling */
 .login-header {
   width: 14.5%;
@@ -327,6 +331,10 @@ p {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
   cursor: pointer;
+}
+
+.main-menu p:hover {
+  color: yellow;
 }
 
 /* About Page Styling */
