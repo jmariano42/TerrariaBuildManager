@@ -59,7 +59,8 @@ p {
 
 /* Login Page Styling */
 .login-header {
-  width: 279px;
+  width: 14.5%;
+  min-width: fit-content;
   height: 66px;
   background-color: #495eab;
   border: 2px solid black;
@@ -68,8 +69,8 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 135px;
-  left: calc(50% - (279px / 2));
+  top: calc(17% - 50px);
+  left: calc(50% - (14.5% / 2));
   z-index: 10;
 }
 
@@ -82,20 +83,20 @@ p {
 }
 
 .login-form-wrapper {
-  width: 779px;
-  height: 682px;
+  width: 40.6%;
+  height: 63.1%;
   background-color: rgba(50, 73, 114, 0.75);
   border: 2px solid black;
   border-radius: 10px;
   color: white;
   font-size: 25px;
   position: absolute;
-  top: 184px;
-  left: calc(50% - (779px / 2));
+  top: 17%;
+  left: calc(50% - (40.6% / 2));
 }
 
 .login-form {
-  width: 720px;
+  width: 92.4%;
   margin: 33px auto;
 }
 
@@ -107,7 +108,7 @@ p {
 }
 
 .login-input-wrapper {
-  width: 720px;
+  width: 100%;
   height: 115px;
   background-color: rgba(59, 78, 139, 0.75);
   border: 2px solid #4f6197;
@@ -116,7 +117,7 @@ p {
 }
 
 .login-form input {
-  width: 710px;
+  width: 98.6%;
   height: 68px;
   margin-left: 3px;
   background-color: #232f52;
@@ -129,7 +130,8 @@ p {
 }
 
 .login-back-button {
-  width: 375px;
+  width: 19.5%;
+  min-width: fit-content;
   height: 60px;
   background-color: #495eab;
   border: 2px solid black;
@@ -138,8 +140,8 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 886px;
-  left: calc(50% - (375px + 14.5px));
+  top: 82%;
+  left: calc(50% - (19.5% + 14.5px));
   cursor: pointer;
 }
 
@@ -152,7 +154,8 @@ p {
 }
 
 .login-submit-button {
-  width: 375px;
+  width: 19.5%;
+  min-width: fit-content;
   height: 60px;
   background-color: #495eab;
   border: 2px solid black;
@@ -161,9 +164,8 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 886px;
+  top: 82%;
   left: calc(50% + 14.5px);
-  cursor: pointer;
 }
 
 #login-submit-btn {
@@ -176,7 +178,7 @@ p {
 
 /* Create Account Page Styling */
 .create-account-header {
-  width: 325px;
+  width: 16.9%;
   height: 66px;
   background-color: #495eab;
   border: 2px solid black;
@@ -185,8 +187,8 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 135px;
-  left: calc(50% - (279px / 2));
+  top: calc(17% - 50px);
+  left: calc(50% - (16.9% / 2));
   z-index: 10;
 }
 
@@ -199,20 +201,21 @@ p {
 }
 
 .create-account-form-wrapper {
-  width: 779px;
-  height: 682px;
+  width: 40.6%;
+  height: 63.1%;
   background-color: rgba(50, 73, 114, 0.75);
   border: 2px solid black;
   border-radius: 10px;
   color: white;
   font-size: 25px;
   position: absolute;
-  top: 184px;
-  left: calc(50% - (779px / 2));
+  top: 17%;
+  left: calc(50% - (40.6% / 2));
+  overflow: scroll;
 }
 
 .create-account-form {
-  width: 720px;
+  width: 92.4%;
   margin: 33px auto;
 }
 
@@ -224,7 +227,7 @@ p {
 }
 
 .create-account-input-wrapper {
-  width: 720px;
+  width: 100%;
   height: 115px;
   background-color: rgba(59, 78, 139, 0.75);
   border: 2px solid #4f6197;
@@ -233,7 +236,7 @@ p {
 }
 
 .create-account-form input {
-  width: 710px;
+  width: 98.6%;
   height: 68px;
   margin-left: 3px;
   background-color: #232f52;
@@ -246,7 +249,8 @@ p {
 }
 
 .create-account-back-button {
-  width: 375px;
+  width: 19.5%;
+  min-width: fit-content;
   height: 60px;
   background-color: #495eab;
   border: 2px solid black;
@@ -255,8 +259,8 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 886px;
-  left: calc(50% - (375px + 14.5px));
+  top: 82%;
+  left: calc(50% - (19.5% + 14.5px));
   cursor: pointer;
 }
 
@@ -269,7 +273,8 @@ p {
 }
 
 .create-account-submit-button {
-  width: 375px;
+  width: 19.5%;
+  min-width: fit-content;
   height: 60px;
   background-color: #495eab;
   border: 2px solid black;
@@ -278,7 +283,7 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 886px;
+  top: 82%;
   left: calc(50% + 14.5px);
   cursor: pointer;
 }
@@ -315,7 +320,8 @@ p {
 
 /* About Page Styling */
 .about-header {
-  width: 279px;
+  width: 14.5%;
+  min-width: fit-content;
   height: 66px;
   background-color: #495eab;
   border: 2px solid black;
@@ -324,8 +330,8 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 135px;
-  left: calc(50% - (279px / 2));
+  top: calc(17% - 50px);
+  left: calc(50% - (14.5% / 2));
   z-index: 10;
 }
 
@@ -338,16 +344,16 @@ p {
 }
 
 .about-content {
-  width: 779px;
-  height: 682px;
+  width: 40.6%;
+  height: 63.1%;
   background-color: rgba(50, 73, 114, 0.75);
   border: 2px solid black;
   border-radius: 10px;
   color: white;
   font-size: 25px;
   position: absolute;
-  top: 184px;
-  left: calc(50% - (779px / 2));
+  top: 17%;
+  left: calc(50% - (40.6% / 2));
 }
 
 .about-content p {
@@ -357,7 +363,8 @@ p {
 }
 
 .about-back-button {
-  width: 375px;
+  width: 19.5%;
+  min-width: fit-content;
   height: 60px;
   background-color: #495eab;
   border: 2px solid black;
@@ -366,8 +373,8 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 886px;
-  left: calc(50% - (375px / 2));
+  top: 82%;
+  left: calc(50% - (19.5% / 2));
   cursor: pointer;
 }
 
@@ -757,7 +764,7 @@ p {
 
 /* Contact Page Styling */
 .contact-header {
-  width: 279px;
+  width: 16.9%;
   height: 66px;
   background-color: #495eab;
   border: 2px solid black;
@@ -766,9 +773,16 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 135px;
-  left: calc(50% - (279px / 2));
+  top: calc(17% - 50px);
+  left: calc(50% - (16.9% / 2));
   z-index: 10;
+}
+
+@media only screen and (max-width: 1712px) {
+  .contact-header {
+    width: 290px;
+    left: calc(50% - (290px / 2));
+  }
 }
 
 .contact-header p {
@@ -780,20 +794,21 @@ p {
 }
 
 .contact-form-wrapper {
-  width: 779px;
-  height: 682px;
+  width: 40.6%;
+  height: 63.1%;
   background-color: rgba(50, 73, 114, 0.75);
   border: 2px solid black;
   border-radius: 10px;
   color: white;
   font-size: 25px;
   position: absolute;
-  top: 184px;
-  left: calc(50% - (779px / 2));
+  top: 17%;
+  left: calc(50% - (40.6% / 2));
+  overflow: scroll;
 }
 
 .contact-form {
-  width: 720px;
+  width: 92.4%;
   margin: 33px auto;
 }
 
@@ -805,7 +820,7 @@ p {
 }
 
 .contact-input-wrapper {
-  width: 720px;
+  width: 100%;
   height: 115px;
   background-color: rgba(59, 78, 139, 0.75);
   border: 2px solid #4f6197;
@@ -814,7 +829,7 @@ p {
 }
 
 .contact-textarea-wrapper {
-  width: 720px;
+  width: 100%;
   height: 234px;
   background-color: rgba(59, 78, 139, 0.75);
   border: 2px solid #4f6197;
@@ -822,7 +837,7 @@ p {
 }
 
 .contact-form input {
-  width: 710px;
+  width: 98.6%;
   height: 68px;
   margin-left: 3px;
   background-color: #232f52;
@@ -835,7 +850,7 @@ p {
 }
 
 .contact-form textarea {
-  width: 710px;
+  width: 98.6%;
   height: 187px;
   margin-left: 3px;
   background-color: #232f52;
@@ -848,7 +863,8 @@ p {
 }
 
 .contact-back-button {
-  width: 375px;
+  width: 19.5%;
+  min-width: fit-content;
   height: 60px;
   background-color: #495eab;
   border: 2px solid black;
@@ -857,8 +873,8 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 886px;
-  left: calc(50% - (375px + 14.5px));
+  top: 82%;
+  left: calc(50% - (19.5% + 14.5px));
   cursor: pointer;
 }
 
@@ -871,7 +887,8 @@ p {
 }
 
 .contact-send-button {
-  width: 375px;
+  width: 19.5%;
+  min-width: fit-content;
   height: 60px;
   background-color: #495eab;
   border: 2px solid black;
@@ -880,7 +897,7 @@ p {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 886px;
+  top: 82%;
   left: calc(50% + 14.5px);
   cursor: pointer;
 }
