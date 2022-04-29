@@ -757,7 +757,7 @@ p {
 }
 
 .build-slot-option img {
-  width: 50%;
+  width: fit-content;
   height: 50%;
 }
 
@@ -789,7 +789,7 @@ p {
 }
 
 .build-equipped-item-slot img {
-  width: 50%;
+  width: fit-content;
   height: 50%;
 }
 
