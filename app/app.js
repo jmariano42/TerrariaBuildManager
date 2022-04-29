@@ -27,10 +27,10 @@ const currentBuild = {
 
 //function checks inputted user credentials
 function authenicateUser(users, username, password) {
-  console.log(currentUser);
+  //console.log(currentUser);
   //find user with given username
   let foundUser = users.find((user) => user.username === username);
-  console.log(foundUser);
+  //console.log(foundUser);
   //check to see if a user was found
   if (!foundUser || foundUser == undefined) {
     //if no user is found then send user back to login
@@ -40,7 +40,7 @@ function authenicateUser(users, username, password) {
     //check if password given matches user password
     if (foundUser.password === password) {
       //user is authenticated
-      console.log("User Authenticated");
+      //console.log("User Authenticated");
       currentUser._id = foundUser._id;
       currentUser.first_name = foundUser.first_name;
       currentUser.last_name = foundUser.last_name;
@@ -48,7 +48,7 @@ function authenicateUser(users, username, password) {
       currentUser.username = foundUser.username;
       currentUser.password = foundUser.password;
       currentUser.builds = foundUser.builds;
-      console.log(currentUser);
+      //console.log(currentUser);
     } else {
       //if password does not match then send user back to login
       let page = "Login";
@@ -107,7 +107,7 @@ function createNewUser(fName, lName, email, username, password, builds) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
+      //console.log("Success:", data);
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -126,7 +126,7 @@ function initCreateAccountListeners() {
     let username = $("#username").val();
     let password = $("#password").val();
     let builds = [];
-    console.log(fName, lName, email, username, password, builds);
+    //console.log(fName, lName, email, username, password, builds);
     createNewUser(fName, lName, email, username, password, builds);
     let page = "Main Menu";
     switchPage(page);
@@ -168,7 +168,7 @@ function initAboutListeners() {
 
 function initNewBuildListeners() {
   $("#equipped-head").click(function () {
-    console.log("display helmets");
+    //console.log("display helmets");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/helmets")
       .then((response) => {
@@ -189,7 +189,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-chest").click(function () {
-    console.log("display chestplates");
+    //console.log("display chestplates");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/chestplates")
       .then((response) => {
@@ -210,7 +210,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-legs").click(function () {
-    console.log("display leggings");
+    //console.log("display leggings");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/leggings")
       .then((response) => {
@@ -231,7 +231,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory1").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -252,7 +252,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory2").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -273,7 +273,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory3").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -294,7 +294,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory4").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -315,7 +315,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory5").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -336,7 +336,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory6").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -357,7 +357,7 @@ function initNewBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory7").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -382,11 +382,11 @@ function initNewBuildListeners() {
     switchPage(page);
   });
   $(".build-save-button").click(function () {
-    console.log("save new build");
+    //console.log("save new build");
     let buildName = $("#build_name").val();
     let buildDescription = $("#build_description").val();
     let buildCheckpoint = $("#build_checkpoint").val();
-    console.log(currentBuild);
+    //console.log(currentBuild);
     let newBuild = {
       name: buildName,
       description: buildDescription,
@@ -394,7 +394,7 @@ function initNewBuildListeners() {
       items: currentBuild,
     };
     currentUser.builds.push(newBuild);
-    console.log(currentUser);
+    //console.log(currentUser);
 
     fetch(`http://localhost:3000/users/${currentUser._id}`, {
       method: "PATCH",
@@ -405,9 +405,9 @@ function initNewBuildListeners() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        //console.log("Success:", data);
         currentUser.builds = data.builds;
-        console.log(currentUser);
+        //console.log(currentUser);
         let page = "Profile";
         switchPage(page);
       })
@@ -415,7 +415,7 @@ function initNewBuildListeners() {
         console.error("Error:", error);
       });
 
-    console.log(currentUser);
+    //console.log(currentUser);
   });
 }
 
@@ -533,13 +533,13 @@ function initAddToBuildListeners(slot) {
       $("#build-info-accessory7").empty();
       $("#build-info-accessory7").append(html);
     }
-    console.log(currentBuild);
+    //console.log(currentBuild);
   });
 }
 
 function initEditBuildListeners() {
   $("#equipped-head").click(function () {
-    console.log("display helmets");
+    //console.log("display helmets");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/helmets")
       .then((response) => {
@@ -560,7 +560,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-chest").click(function () {
-    console.log("display chestplates");
+    //console.log("display chestplates");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/chestplates")
       .then((response) => {
@@ -581,7 +581,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-legs").click(function () {
-    console.log("display leggings");
+    //console.log("display leggings");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/leggings")
       .then((response) => {
@@ -602,7 +602,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory1").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -623,7 +623,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory2").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -644,7 +644,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory3").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -665,7 +665,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory4").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -686,7 +686,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory5").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -707,7 +707,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory6").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -728,7 +728,7 @@ function initEditBuildListeners() {
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
   $("#equipped-accessory7").click(function () {
-    console.log("display accessories");
+    //console.log("display accessories");
     $(".build-slot-options").empty();
     fetch("http://localhost:3000/accessories")
       .then((response) => {
@@ -753,13 +753,13 @@ function initEditBuildListeners() {
     switchPage(page);
   });
   $(".build-save-button").click(function () {
-    console.log("save build edit");
+    //console.log("save build edit");
     let buildName = editBuildName.name;
-    console.log(buildName);
+    //console.log(buildName);
     let builds = currentUser.builds;
-    console.log(builds);
+    //console.log(builds);
     let buildIndex = builds.findIndex((build) => build.name == buildName);
-    console.log(buildIndex);
+    //console.log(buildIndex);
     let oldBuild = builds[buildIndex];
     if ($("#build_name").val() == "") {
       buildName = oldBuild.name;
@@ -867,7 +867,7 @@ function initEditBuildListeners() {
       items: buildItems,
     };
     builds[buildIndex] = newBuild;
-    console.log(currentUser);
+    //console.log(currentUser);
 
     fetch(`http://localhost:3000/users/${currentUser._id}`, {
       method: "PATCH",
@@ -878,7 +878,7 @@ function initEditBuildListeners() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        //console.log("Success:", data);
         let page = "Profile";
         switchPage(page);
       })
@@ -904,7 +904,7 @@ function addUserBuildData() {
       );
       $(".build-slot-options").append(html);
       initAddToBuildListeners("helmet");
-      console.log(currentBuild);
+      //console.log(currentBuild);
       if (currentBuild.helmet != null) {
         $("#equipped-head").append(`<img src=${currentBuild.helmet.image} />`);
         $("#build-info-helmet").append(
@@ -992,7 +992,7 @@ function initProfileBuildListeners() {
     buildName = this.getAttribute("data-build-name");
     editBuildName.name = buildName;
     let build = currentUser.builds.find((build) => build.name == buildName);
-    console.log(build);
+    //console.log(build);
     fetch("http://localhost:3000/helmets")
       .then((response) => {
         if (!response.ok) {
@@ -1063,7 +1063,7 @@ function initProfileBuildListeners() {
         );
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
-    console.log(currentBuild);
+    //console.log(currentBuild);
     let page = "Edit Build";
     switchPage(page);
   });
@@ -1085,7 +1085,7 @@ function addUserProfileData() {
   let email = currentUser.email;
   let username = currentUser.username;
   let builds = currentUser.builds;
-  console.log(name, email, username, builds);
+  //console.log(name, email, username, builds);
   $("#profile-name").append(name);
   $("#profile-email").append(email);
   $("#profile-username").append(username);
@@ -1131,7 +1131,7 @@ function initContactListeners() {
     switchPage(page);
   });
   $(".contact-send-button").click(function () {
-    console.log("send email");
+    //console.log("send email");
     let fName = $("#first_name").val();
     let lName = $("#last_name").val();
     let name = fName + " " + lName;
@@ -1209,7 +1209,7 @@ function loadLandingMenu() {
 }
 
 function switchPage(page) {
-  console.log(page);
+  //console.log(page);
   if (page == "About") {
     $(".wrapper").empty();
     loadAbout();
