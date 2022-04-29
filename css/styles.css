@@ -192,6 +192,13 @@ p {
   z-index: 10;
 }
 
+@media only screen and (max-width: 1712px) {
+  .create-account-header {
+    width: 290px;
+    left: calc(50% - (290px / 2));
+  }
+}
+
 .create-account-header p {
   margin-top: 25px;
   color: white;
