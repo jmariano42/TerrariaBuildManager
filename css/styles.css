@@ -229,6 +229,10 @@ p {
   overflow: scroll;
 }
 
+.create-account-form-wrapper::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 .create-account-form {
   width: 92.4%;
   margin: 33px auto;
@@ -573,6 +577,10 @@ p {
   overflow: scroll;
 }
 
+.profile-build-description::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 @media only screen and (max-width: 1820px) {
   .profile-build-description {
     width: 56.8%;
@@ -707,6 +715,10 @@ p {
   overflow: scroll;
 }
 
+.build-info::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 .build-info-header2 {
   color: white;
   font-size: 25px;
@@ -744,6 +756,10 @@ p {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+.build-slot-options::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 .build-slot-option {
   width: 50px;
   height: 50px;
@@ -766,6 +782,10 @@ p {
   min-width: fit-content;
   height: 81.4%;
   overflow: scroll;
+}
+
+.build-equipped-items-wrapper::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
 
 .build-equipped-items-header {
@@ -886,6 +906,10 @@ p {
   top: 17%;
   left: calc(50% - (40.6% / 2));
   overflow: scroll;
+}
+
+.contact-form-wrapper::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
 
 .contact-form {
