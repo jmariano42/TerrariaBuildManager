@@ -203,8 +203,8 @@ p {
 
 @media only screen and (max-width: 1712px) {
   .create-account-header {
-    width: 290px;
-    left: calc(50% - (290px / 2));
+    width: 325px;
+    left: calc(50% - (325px / 2));
   }
 }
 
