@@ -1,5 +1,7 @@
+//require mongoose
 const mongoose = require("mongoose");
 
+//schema for chestplate
 const chestplateSchema = new mongoose.Schema({
   name: {
     type: String,

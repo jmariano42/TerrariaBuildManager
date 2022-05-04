@@ -1,7 +1,9 @@
+//require express for routing and helmet schema
 const express = require("express");
 const router = express.Router();
 const Helmet = require("../models/helmet");
 
+//setup CORS access
 router.all("/", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -31,6 +33,7 @@ router.get("/:id", getHelmet, (req, res) => {
   res.json(res.helmet);
 });
 
+//function to get one helmet
 async function getHelmet(req, res, next) {
   let helmet;
   try {

@@ -1,7 +1,9 @@
+//require express for routing and chestplate schema
 const express = require("express");
 const router = express.Router();
 const Chestplate = require("../models/chestplate");
 
+//setup CORS access
 router.all("/", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -31,6 +33,7 @@ router.get("/:id", getChestplate, (req, res) => {
   res.json(res.chestplate);
 });
 
+//function to get one chestplate
 async function getChestplate(req, res, next) {
   let chestplate;
   try {

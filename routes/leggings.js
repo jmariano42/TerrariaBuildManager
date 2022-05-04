@@ -1,7 +1,9 @@
+//require express for routing and legging schema
 const express = require("express");
 const router = express.Router();
 const Legging = require("../models/legging");
 
+//setup CORS access
 router.all("/", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -26,11 +28,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Getting one legging
+//Getting one pair of leggings
 router.get("/:id", getLegging, (req, res) => {
   res.json(res.legging);
 });
 
+//function to get 1 pair of leggings
 async function getLegging(req, res, next) {
   let legging;
   try {

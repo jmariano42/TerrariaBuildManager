@@ -1,7 +1,9 @@
+//require express for routing and user schema
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 
+//setup CORS access
 router.all("/", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -16,6 +18,7 @@ router.all("/", function (req, res, next) {
   next();
 });
 
+//setup CORS access
 router.all("/:id", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -102,6 +105,7 @@ router.delete("/:id", getUser, async (req, res) => {
   }
 });
 
+//function to get user
 async function getUser(req, res, next) {
   let user;
   try {

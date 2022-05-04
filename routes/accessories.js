@@ -1,7 +1,9 @@
+//require express for routing and accessory schema
 const express = require("express");
 const router = express.Router();
 const Accessory = require("../models/accessory");
 
+//setup CORS setup
 router.all("/", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -31,6 +33,7 @@ router.get("/:id", getAccessory, (req, res) => {
   res.json(res.accessory);
 });
 
+//function to get one accessory
 async function getAccessory(req, res, next) {
   let accessory;
   try {

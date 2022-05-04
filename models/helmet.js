@@ -1,5 +1,7 @@
+//require mongoose
 const mongoose = require("mongoose");
 
+//schema for helmet
 const helmetSchema = new mongoose.Schema({
   name: {
     type: String,

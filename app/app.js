@@ -1,3 +1,4 @@
+//constant to hold current user data
 const currentUser = {
   _id: null,
   first_name: null,
@@ -8,10 +9,12 @@ const currentUser = {
   builds: null,
 };
 
+//constant to hold the name of the build to be edited
 const editBuildName = {
   name: null,
 };
 
+//constant to hold info on the current build
 const currentBuild = {
   helmet: null,
   chestplate: null,
@@ -59,19 +62,24 @@ function authenicateUser(users, username, password) {
 
 //login page listeners
 function initLoginListeners() {
+  //login back button listener
   $(".login-back-button").click(function () {
+    //on click change page to landing menu
     let page = "Landing Menu";
     switchPage(page);
   });
+  //login submit button listener
   $(".login-submit-button").click(function (value) {
     //retrieve user input
     let username = $("#username").val();
     let password = $("#password").val();
+    //if there is no input for one of the fields
+    //send user back to login page
     if (!username || !password) {
       let page = "Login";
       switchPage(page);
     } else {
-      //fetch users
+      //fetch users and on success run authenticateUser
       fetch("http://localhost:3000/users")
         .then((response) => {
           if (!response.ok) {
@@ -88,7 +96,9 @@ function initLoginListeners() {
   });
 }
 
+//function creates a new user in the database
 function createNewUser(fName, lName, email, username, password, builds) {
+  //create user object with user input
   let user = {
     first_name: fName,
     last_name: lName,
@@ -98,6 +108,7 @@ function createNewUser(fName, lName, email, username, password, builds) {
     builds: builds,
   };
 
+  //post new user to database and on success set the current user info
   fetch("http://localhost:3000/users", {
     method: "POST",
     headers: {
@@ -110,46 +121,66 @@ function createNewUser(fName, lName, email, username, password, builds) {
       //console.log("Success:", data);
       currentUser.first_name = fName;
       currentUser.last_name = lName;
-      currentUser.email = username;
+      currentUser.email = email;
+      currentUser.username = username;
+      currentUser.password = password;
+      currentUser.builds = builds;
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 }
 
+//create account listeners
 function initCreateAccountListeners() {
+  //create account back button listener
   $(".create-account-back-button").click(function () {
+    //on click change page to landing menu
     let page = "Landing Menu";
     switchPage(page);
   });
+  //create account submit button listener
   $(".create-account-submit-button").click(function (value) {
+    //retrieve user input
     let fName = $("#first_name").val();
     let lName = $("#last_name").val();
     let email = $("#email").val();
     let username = $("#username").val();
     let password = $("#password").val();
+    //set builds to empty array
     let builds = [];
     //console.log(fName, lName, email, username, password, builds);
+    //run create new user and pass in data
     createNewUser(fName, lName, email, username, password, builds);
+    //change page to main menu
     let page = "Main Menu";
     switchPage(page);
   });
 }
 
+//main menu listeners
 function initMainMenuListeners() {
+  //main menu about button listener
   $("#about-btn").click(function (value) {
+    //change page to about page
     let page = value.currentTarget.innerHTML;
     switchPage(page);
   });
+  //main menu profile button listener
   $("#profile-btn").click(function (value) {
+    //change page to profile page
     let page = value.currentTarget.innerHTML;
     switchPage(page);
   });
+  //main menu contact button listener
   $("#contact-btn").click(function (value) {
+    //change page to contact page
     let page = value.currentTarget.innerHTML;
     switchPage(page);
   });
+  //main menu logout button listener
   $("#logout-btn").click(function (value) {
+    //clear current user data
     currentUser._id = null;
     currentUser.first_name = null;
     currentUser.last_name = null;
@@ -157,22 +188,31 @@ function initMainMenuListeners() {
     currentUser.username = null;
     currentUser.password = null;
     currentUser.builds = null;
+    //change page to landing menu
     let page = "Landing Menu";
     switchPage(page);
   });
 }
 
+//about page listeners
 function initAboutListeners() {
+  //about back button listener
   $(".about-back-button").click(function (value) {
+    //change page to main menu
     let page = "Main Menu";
     switchPage(page);
   });
 }
 
+//new build listeners
 function initNewBuildListeners() {
+  //new build equipped head listener
   $("#equipped-head").click(function () {
     //console.log("display helmets");
+    //empty build slot options div
     $(".build-slot-options").empty();
+    //fetch helmets and on success and helmet options
+    //to the build slot options div
     fetch("http://localhost:3000/helmets")
       .then((response) => {
         if (!response.ok) {
@@ -191,9 +231,13 @@ function initNewBuildListeners() {
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
+  //new build equipped chest listener
   $("#equipped-chest").click(function () {
     //console.log("display chestplates");
+    //empty build slot options
     $(".build-slot-options").empty();
+    //fetch chestplates and then add chestplate options to
+    //build slot options div
     fetch("http://localhost:3000/chestplates")
       .then((response) => {
         if (!response.ok) {
@@ -212,9 +256,13 @@ function initNewBuildListeners() {
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
+  //new build equipped legs listener
   $("#equipped-legs").click(function () {
     //console.log("display leggings");
+    //empty build slot options div
     $(".build-slot-options").empty();
+    //fetch chestplates and then add chestplate options to
+    //build slot options div
     fetch("http://localhost:3000/leggings")
       .then((response) => {
         if (!response.ok) {
@@ -233,9 +281,14 @@ function initNewBuildListeners() {
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
+  //new build accessory1 listener
+  //the following accessory2-accessory7 listeners have the same functionality
   $("#equipped-accessory1").click(function () {
     //console.log("display accessories");
+    //empty build slot options div
     $(".build-slot-options").empty();
+    //fetch chestplates and then add chestplate options to
+    //build slot options div
     fetch("http://localhost:3000/accessories")
       .then((response) => {
         if (!response.ok) {
@@ -380,12 +433,16 @@ function initNewBuildListeners() {
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
   });
+  //new build back button listener
   $(".build-back-button").click(function () {
+    //on click change page to profile page
     let page = "Profile";
     switchPage(page);
   });
+  //new build save button listener
   $(".build-save-button").click(function () {
     //console.log("save new build");
+    //retrieve build data
     let buildName = $("#build_name").val();
     let buildDescription = $("#build_description").val();
     let buildCheckpoint = $("#build_checkpoint").val();
@@ -399,6 +456,8 @@ function initNewBuildListeners() {
     currentUser.builds.push(newBuild);
     //console.log(currentUser);
 
+    //update current user's build property with new build
+    //then switch page to profile page
     fetch(`http://localhost:3000/users/${currentUser._id}`, {
       method: "PATCH",
       headers: {
@@ -422,7 +481,11 @@ function initNewBuildListeners() {
   });
 }
 
+//function adds data to the new build page when loaded
 function addNewBuildData() {
+  //fetch helmets and add them as slot options
+  //to the build slot options div
+  //and run initAddToBuildListeners
   fetch("http://localhost:3000/helmets")
     .then((response) => {
       if (!response.ok) {
@@ -442,8 +505,11 @@ function addNewBuildData() {
     .catch((err) => console.error(`Fetch problem: ${err.message}`));
 }
 
+//listeners for slot options
 function initAddToBuildListeners(slot) {
+  //new build and edit build slot option listener
   $(".build-slot-option").click(function () {
+    //retrieve data
     let selectedItemId = `${this.id}`;
     let selectedItemName = this.getAttribute("data-option-name");
     let selectedItemDefense = this.getAttribute("data-option-defense");
@@ -455,6 +521,10 @@ function initAddToBuildListeners(slot) {
       defense: selectedItemDefense,
       image: selectedItemImage,
     };
+    //check for item slot
+    //then add item data to equipped slot
+    //and add item data to info slot
+    //^ same for each met condition
     if (slot == "helmet") {
       currentBuild.helmet = selectedItem.id;
       let html = `<img src=${selectedItem.image} />`;
@@ -540,6 +610,9 @@ function initAddToBuildListeners(slot) {
   });
 }
 
+//listeners for the edit build page
+//listeners will do the same thing as the
+//new build page listeners except the save build listener
 function initEditBuildListeners() {
   $("#equipped-head").click(function () {
     //console.log("display helmets");
@@ -756,14 +829,21 @@ function initEditBuildListeners() {
     switchPage(page);
   });
   $(".build-save-button").click(function () {
-    //console.log("save build edit");
+    //console.losg("save build edit");
+    //retrieve edited build name
     let buildName = editBuildName.name;
     //console.log(buildName);
+    //retrieve currentUser builds array
     let builds = currentUser.builds;
     //console.log(builds);
+    //find index of build currently being edited
     let buildIndex = builds.findIndex((build) => build.name == buildName);
     //console.log(buildIndex);
+    //set oldBuild equal to the initial state of the build being edited
     let oldBuild = builds[buildIndex];
+    //check if new data was entered for each part of a build
+    //if there is new data set variable equal to new data
+    //if there is no new data set variable equal to old data
     if ($("#build_name").val() == "") {
       buildName = oldBuild.name;
     } else {
@@ -851,7 +931,8 @@ function initEditBuildListeners() {
     } else {
       buildAccessory7 = currentBuild.accessory7._id;
     }
-    buildItems = {
+    //make buildItems object with compiled items set to respective attribute
+    let buildItems = {
       helmet: buildHelmet,
       chestplate: buildChestplate,
       leggings: buildLeggings,
@@ -863,15 +944,19 @@ function initEditBuildListeners() {
       accessory6: buildAccessory6,
       accessory7: buildAccessory7,
     };
+    //make newBuild object with compiled data for the edited build
     let newBuild = {
       name: buildName,
       description: buildDescription,
       game_checkpoint: buildCheckpoint,
       items: buildItems,
     };
+    //replace old build data with new build data
     builds[buildIndex] = newBuild;
     //console.log(currentUser);
 
+    //update current user in database with edited build data added
+    //then switch page if successful
     fetch(`http://localhost:3000/users/${currentUser._id}`, {
       method: "PATCH",
       headers: {
@@ -891,7 +976,13 @@ function initEditBuildListeners() {
   });
 }
 
+//function adds the build to be edited's data to the edit build page
+//also adds inital options on load
 function addUserBuildData() {
+  //fetch helmets and add them as options to build slot options
+  //when successful run initAddToBuildListeners
+  //then check if the build has data for each slot and if it does
+  //add the data to the page
   fetch("http://localhost:3000/helmets")
     .then((response) => {
       if (!response.ok) {
@@ -990,12 +1081,21 @@ function addUserBuildData() {
     .catch((err) => console.error(`Fetch problem: ${err.message}`));
 }
 
+//listeners for builds on profile page
 function initProfileBuildListeners() {
+  //profile page build listener
   $(".profile-build").click(function (value) {
+    //retrieve build name from data attribute on div that is clicked
     buildName = this.getAttribute("data-build-name");
+    //set constant property equal to build name
     editBuildName.name = buildName;
+    //set build equal to the data of the build that has
+    //the matching name
     let build = currentUser.builds.find((build) => build.name == buildName);
     //console.log(build);
+    //fetch each item type and find the item of that type with
+    //the corresponding id to the id in the build's property
+    //then add the full item's object data to the build variable
     fetch("http://localhost:3000/helmets")
       .then((response) => {
         if (!response.ok) {
@@ -1067,32 +1167,42 @@ function initProfileBuildListeners() {
       })
       .catch((err) => console.error(`Fetch problem: ${err.message}`));
     //console.log(currentBuild);
+    //switch page to edit build page
     let page = "Edit Build";
     switchPage(page);
   });
 }
 
+//listeners for profile page
 function initProfileListeners() {
+  //profile page back button listener
   $(".profile-back-button").click(function () {
+    //on click change page to main menu
     let page = "Main Menu";
     switchPage(page);
   });
+  //profile page new button listener
   $(".profile-new-button").click(function () {
+    //on click change page to new build page
     let page = "New Build";
     switchPage(page);
   });
 }
 
+//function adds the user's data to the profile page
 function addUserProfileData() {
+  //retrieve user data from constant
   let name = currentUser.first_name + " " + currentUser.last_name;
   let email = currentUser.email;
   let username = currentUser.username;
   let builds = currentUser.builds;
   //console.log(name, email, username, builds);
+  //add user data to the page
   $("#profile-name").append(name);
   $("#profile-email").append(email);
   $("#profile-username").append(username);
 
+  //add each of the user's builds to the page
   builds.forEach((build) => {
     $(".profile-builds-wrapper").append(`
     <div class="profile-build" data-build-name="${build.name}">
@@ -1110,6 +1220,8 @@ function addUserProfileData() {
     `);
   });
 
+  //clear currentBuild constant data
+  //since this is a new build the data needs to be wiped
   currentBuild.helmet = null;
   currentBuild.chestplate = null;
   currentBuild.leggings = null;
@@ -1122,28 +1234,41 @@ function addUserProfileData() {
   currentBuild.accessory7 = null;
 }
 
+//function opens the users mail app and
+//drafts an email for them to send to me
 function sendEmail(name, subject, message) {
   window.open(
     `mailto:jcapp42@gmail.com?subject=From ${name} about ${subject}&body=${message}`
   );
 }
 
+//listeners for the contact apge
 function initContactListeners() {
+  //contact page back button
   $(".contact-back-button").click(function () {
+    //on click change page to main menu
     let page = "Main Menu";
     switchPage(page);
   });
+  //contact page send button
   $(".contact-send-button").click(function () {
+    //on click draft email to be sent
     //console.log("send email");
+    //retrieve user input
     let fName = $("#first_name").val();
     let lName = $("#last_name").val();
     let name = fName + " " + lName;
     let subject = $("#subject").val();
     let message = $("#message").val();
+    //run sendEmail with data collected
     sendEmail(name, subject, message);
   });
 }
 
+//the following loadPage functions load the given page
+//by getting the desired view and adding the view to the
+//wrapper div. The function will then run functions for
+//listeners or to add data to the page if needed
 function loadAbout() {
   $.get("../views/about.html", function (about) {
     $(".wrapper").html(about);
@@ -1211,6 +1336,9 @@ function loadLandingMenu() {
   });
 }
 
+//function checks page var to see what page should be loaded
+//then emptys the wrapper div and runs the load function for
+//the desired page
 function switchPage(page) {
   //console.log(page);
   if (page == "About") {
