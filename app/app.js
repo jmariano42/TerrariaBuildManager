@@ -108,7 +108,7 @@ function createNewUser(fName, lName, email, username, password, builds) {
     builds: builds,
   };
 
-  //post new user to database and on success set the current user info
+  //post new user to database
   fetch("http://localhost:3000/users", {
     method: "POST",
     headers: {
@@ -119,16 +119,21 @@ function createNewUser(fName, lName, email, username, password, builds) {
     .then((response) => response.json())
     .then((data) => {
       //console.log("Success:", data);
-      currentUser.first_name = fName;
-      currentUser.last_name = lName;
-      currentUser.email = email;
-      currentUser.username = username;
-      currentUser.password = password;
-      currentUser.builds = builds;
     })
     .catch((error) => {
       console.error("Error:", error);
     });
+
+  //set the current user info
+  currentUser.first_name = fName;
+  currentUser.last_name = lName;
+  currentUser.email = email;
+  currentUser.username = username;
+  currentUser.password = password;
+  currentUser.builds = builds;
+  //change page to main menu
+  let page = "Main Menu";
+  switchPage(page);
 }
 
 //create account listeners
@@ -152,9 +157,6 @@ function initCreateAccountListeners() {
     //console.log(fName, lName, email, username, password, builds);
     //run create new user and pass in data
     createNewUser(fName, lName, email, username, password, builds);
-    //change page to main menu
-    let page = "Main Menu";
-    switchPage(page);
   });
 }
 
